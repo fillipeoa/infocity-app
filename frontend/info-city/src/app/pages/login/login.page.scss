@@ -1,0 +1,43 @@
+@font-face {
+    font-family: Abel;
+    src: url(../../../assets/fonts/Abel-Regular.ttf);
+}
+
+ion-content{
+    --ion-background-color: #61BE6B;
+}
+
+.logo{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 83.06%;
+    top: 10%;
+}
+
+.fundo{
+    position: relative;
+    top: 20%;
+    height: 60%;
+    background-color: white;
+}
+
+.titulo{
+    width: 100%;
+    text-align: center;
+    padding-top: 10%;
+
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 61px;
+
+    color: #FFFFFF;
+}
+
+.form{
+    --ion-background-color:  #FFFFFF;
+}
+
