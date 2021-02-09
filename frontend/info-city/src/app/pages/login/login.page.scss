@@ -4,7 +4,11 @@
 }
 
 ion-content{
-    --ion-background-color: #61BE6B;
+    --ion-background-color: var( --ion-color-primary);
+}
+
+ion-header{
+    --ion-background-color: var( --ion-color-primary);
 }
 
 .logo{
@@ -12,21 +16,20 @@ ion-content{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 83.06%;
-    top: 10%;
+    width: 50%;
+    top: 2%;
 }
 
 .fundo{
     position: relative;
-    top: 20%;
-    height: 60%;
-    background-color: white;
+    height: 85.5%;
+    background-color: var(--ion-color-secondary);
 }
 
 .titulo{
     width: 100%;
     text-align: center;
-    padding-top: 10%;
+    padding-top: 30%;
 
     font-family: Abel;
     font-style: normal;
@@ -34,11 +37,11 @@ ion-content{
     font-size: 48px;
     line-height: 61px;
 
-    color:#61BE6B;
+    color:var( --ion-color-primary);
 }
 
 .form{
-    --ion-background-color:  #FFFFFF;
+    --ion-background-color: var(--ion-color-secondary);
     position: relative;
     display: block;
     margin-left: auto;
