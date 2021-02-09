@@ -1,0 +1,47 @@
+@font-face {
+    font-family: Abel;
+    src: url(../../../assets/fonts/Abel-Regular.ttf);
+}
+
+.toolbar-verde{
+    --background: #61BE6B;
+}
+
+.logo{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 83.06%;
+}
+
+.fundo{
+    position: relative;
+    height: 100%;
+    background-color: white;
+}
+
+.titulo{
+    width: 100%;
+    text-align: center;
+    padding-top: 10%;
+
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 61px;
+
+    color:#61BE6B;
+}
+
+.form{
+    --ion-background-color:  #FFFFFF;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 83.06%;
+}
+
+
