@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'cadastro-localizacao',
     loadChildren: () => import('./pages/cadastro-localizacao/cadastro-localizacao.module').then( m => m.CadastroLocalizacaoPageModule)
+  },
+  {
+    path: 'index',
+    loadChildren: () => import('./pages/index/index.module').then( m => m.IndexPageModule)
   }
 
 
