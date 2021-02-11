@@ -28,6 +28,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'colaboracoes',
+    loadChildren: () => import('./pages/colaboracoes/colaboracoes.module').then( m => m.ColaboracoesPageModule)
   }
 
 
