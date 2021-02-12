@@ -31,6 +31,16 @@ const routes: Routes = [
             ]
         },
         {
+          path: 'perfil',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../perfil/perfil.module#PerfilPageModule'
+              }
+            ]
+        },
+        {
           path: '',
           redirectTo: '/tabs/home',
           pathMatch: 'full'
