@@ -5,7 +5,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children:
       [
@@ -19,6 +19,17 @@ const routes: Routes = [
               }
             ]
         },
+
+        {
+          path: 'colaboracoes',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../colaboracoes/colaboracoes.module#ColaboracoesPageModule'
+              }
+            ]
+        },
         {
           path: 'perfil',
           children:
@@ -28,11 +39,6 @@ const routes: Routes = [
                 loadChildren: '../perfil/perfil.module#PerfilPageModule'
               }
             ]
-        },
-        {
-          path: '',
-          redirectTo: '/tabs/home',
-          pathMatch: 'full'
         }
       ]
   },

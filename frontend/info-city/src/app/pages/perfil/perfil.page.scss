@@ -25,21 +25,35 @@ ion-header{
 }
 
 .titulo{
-    text-align: left;
-    margin: 0px;
+    text-align: center;
+    margin: auto;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 50px;
+
+    color:var( --ion-color-primary);
+}
+
+.subtitulo{
+    text-align: center;
+    margin: auto;
     font-family: Abel;
     font-style: normal;
     font-weight: normal;
     font-size: 30px;
     line-height: 50px;
 
-    color:var( --ion-color-primary);
+    color:gray;
 }
 
-h2{
+h3{
     margin-top: 10px;
+    color: #424242;
 }
 
 ion-icon {
     font-size: 44px;
+    color:#424242;
   }
