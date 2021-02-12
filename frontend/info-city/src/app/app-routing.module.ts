@@ -32,6 +32,14 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'colaboracoes',
+    loadChildren: () => import('./pages/colaboracoes/colaboracoes.module').then( m => m.ColaboracoesPageModule)
+  },
+  {
+    path: 'detalhe-colaboracao',
+    loadChildren: () => import('./pages/detalhe-colaboracao/detalhe-colaboracao.module').then( m => m.DetalheColaboracaoPageModule)
   }
 
 

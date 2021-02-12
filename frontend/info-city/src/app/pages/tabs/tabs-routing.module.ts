@@ -19,6 +19,17 @@ const routes: Routes = [
               }
             ]
         },
+
+        {
+          path: 'colaboracoes',
+          children:
+            [
+              {
+                path: '',
+                loadChildren: '../colaboracoes/colaboracoes.module#ColaboracoesPageModule'
+              }
+            ]
+        },
         {
           path: 'perfil',
           children:
