@@ -3,11 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule'
+    path: '',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
     path: 'login',
@@ -26,21 +23,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/index/index.module').then( m => m.IndexPageModule)
   },
   {
-    path: 'tabs',
-    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
-  },
-  {
-    path: 'perfil',
-    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
-  },
-  {
-    path: 'colaboracoes',
-    loadChildren: () => import('./pages/colaboracoes/colaboracoes.module').then( m => m.ColaboracoesPageModule)
-  },
-  {
     path: 'detalhe-colaboracao',
     loadChildren: () => import('./pages/detalhe-colaboracao/detalhe-colaboracao.module').then( m => m.DetalheColaboracaoPageModule)
+  },  {
+    path: 'cadastro-colaboracao',
+    loadChildren: () => import('./pages/cadastro-colaboracao/cadastro-colaboracao.module').then( m => m.CadastroColaboracaoPageModule)
   }
+
 
 
 
