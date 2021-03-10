@@ -1,5 +1,4 @@
 package com.infocity.api.model;
-
 import java.util.Date;
 
 import javax.persistence.Column;
