@@ -20,4 +20,8 @@ public class UsuarioService {
 	public Usuario findUserByNome(String name) {
 		return usuarioRepository.findByNome(name);
 	}
+
+	public Usuario findUserByUserName(String userName) {
+		return usuarioRepository.findByUserName(userName);
+	}
 }
