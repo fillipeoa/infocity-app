@@ -19,20 +19,21 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cadastro-localizacao/cadastro-localizacao.module').then( m => m.CadastroLocalizacaoPageModule)
   },
   {
+    path: 'cadastro-localizacao/:id',
+    loadChildren: () => import('./pages/cadastro-localizacao/cadastro-localizacao.module').then( m => m.CadastroLocalizacaoPageModule)
+  },
+  {
     path: 'index',
     loadChildren: () => import('./pages/index/index.module').then( m => m.IndexPageModule)
   },
   {
     path: 'detalhe-colaboracao',
     loadChildren: () => import('./pages/detalhe-colaboracao/detalhe-colaboracao.module').then( m => m.DetalheColaboracaoPageModule)
-  },  {
+  },
+  {
     path: 'cadastro-colaboracao',
     loadChildren: () => import('./pages/cadastro-colaboracao/cadastro-colaboracao.module').then( m => m.CadastroColaboracaoPageModule)
   }
-
-
-
-
 ];
 
 @NgModule({

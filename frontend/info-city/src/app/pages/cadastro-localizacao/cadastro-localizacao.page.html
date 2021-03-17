@@ -15,15 +15,15 @@
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Cidade</ion-label>
-        <ion-input type="cidade"></ion-input>
+        <ion-input type="text" [(ngModel)]="usuario.cidade"></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Bairro</ion-label>
-        <ion-input type="bairro"></ion-input>
+        <ion-input type="text" [(ngModel)]="usuario.bairro"></ion-input>
       </ion-item>
 
-      <ion-button expand="block" color="primary" class="ion-margin" shape="round">Concluir</ion-button>
+      <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="cadastrar()">Concluir</ion-button>
      
      
     </div>
