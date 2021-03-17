@@ -6,7 +6,7 @@
 
 <ion-content padding>
   <div class="cards">
-    <ion-card href="detalhe-colaboracao">
+    <ion-card href="detalhe-colaboracao" *ngFor="let colaboracao of colaboracoes">
       <ion-card-header>
         <ion-card-title>
           <ion-item>
@@ -15,51 +15,13 @@
                 src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png"
               />
             </ion-avatar>
-            <ion-label>Mesas na rua!</ion-label>
+            <ion-label>{{colaboracao.titulo}}</ion-label>
           </ion-item>
         </ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
-        Bar do meu bairro está deixando mesas na rua! 
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          <ion-item>
-            <ion-avatar slot="start">
-              <img
-                src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png"
-              />
-            </ion-avatar>
-            <ion-label>Cano estourado</ion-label>
-          </ion-item>
-        </ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        Tubulação rompida, água está vazando e molhando todo o asfalto.  
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          <ion-item>
-            <ion-avatar slot="start">
-              <img
-                src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png"
-              />
-            </ion-avatar>
-            <ion-label>Buraco no asfalto</ion-label>
-          </ion-item>
-        </ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        Buraco no asfalto em frente minha casa, 3 carros já furaram o pneu essa semana.
+        {{colaboracao.descricao}}
       </ion-card-content>
     </ion-card>
   </div>
