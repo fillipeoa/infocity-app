@@ -33,6 +33,14 @@ const routes: Routes = [
   {
     path: 'cadastro-colaboracao',
     loadChildren: () => import('./pages/cadastro-colaboracao/cadastro-colaboracao.module').then( m => m.CadastroColaboracaoPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   }
 ];
 

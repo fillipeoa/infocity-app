@@ -48,6 +48,7 @@ export class CadastroLocalizacaoPage implements OnInit {
       }
     }
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    localStorage.setItem('usuarioLogado', JSON.stringify(this.usuario));
     this.router.navigate(['/home']);
   }
 

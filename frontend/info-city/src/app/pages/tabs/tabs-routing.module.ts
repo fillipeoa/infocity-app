@@ -15,7 +15,7 @@ const routes: Routes = [
             [
               {
                 path: '',
-                loadChildren: '../home/home.module#HomePageModule'
+                loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
               }
             ]
         },
@@ -26,7 +26,7 @@ const routes: Routes = [
             [
               {
                 path: '',
-                loadChildren: '../colaboracoes/colaboracoes.module#ColaboracoesPageModule'
+                loadChildren: () => import('../colaboracoes/colaboracoes.module').then( m => m.ColaboracoesPageModule)
               }
             ]
         },
@@ -36,7 +36,7 @@ const routes: Routes = [
             [
               {
                 path: '',
-                loadChildren: '../perfil/perfil.module#PerfilPageModule'
+                loadChildren: () => import('../perfil/perfil.module').then( m => m.PerfilPageModule)
               }
             ]
         }
