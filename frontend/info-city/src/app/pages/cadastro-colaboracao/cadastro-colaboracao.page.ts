@@ -13,6 +13,7 @@ export class CadastroColaboracaoPage implements OnInit {
     id_usuario: null,
     titulo: null,
     descricao: null,
+    cidade: null,
     rua: null,
     numero: null,
     bairro: null,

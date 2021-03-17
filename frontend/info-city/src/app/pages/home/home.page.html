@@ -1,60 +1,26 @@
 <ion-header>
   <ion-toolbar>
     <img class="logo" src="../../../assets/icon/logo2.png" alt="" />
-    <h2 class="titulo">Colaborações de Timóteo-MG</h2>
+    <h2 class="titulo">Colaborações de {{usuario.cidade}}</h2>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <div class="cards">
-    <ion-card>
+    <ion-card *ngFor="let colaboracao of colaboracoes">
       <ion-card-header>
         <ion-card-title>
             <ion-item>
                 <ion-avatar slot="start">
                   <img src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4-300x300.png">
                 </ion-avatar>
-                <ion-label>Buraco na via</ion-label>
+                <ion-label>{{colaboracao.titulo}}</ion-label>
               </ion-item>
         </ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
-       Buraco perigoso na estrada, carros precisam entrar na contra mão para desviar dele!
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-            <ion-item>
-                <ion-avatar slot="start">
-                  <img src="https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg">
-                </ion-avatar>
-                <ion-label>Ponto de entulho</ion-label>
-              </ion-item>
-        </ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        Construção está deixando entulhos na calçada, é impossível o transito de pedestres. 
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-            <ion-item>
-                <ion-avatar slot="start">
-                  <img src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-2.png">
-                </ion-avatar>
-                <ion-label>Foco de denque</ion-label>
-              </ion-item>
-        </ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        Meu vizinho saiu para viagem e esqueceu pneus a ceu aberto pegando chuva.
+       {{colaboracao.descricao}}
       </ion-card-content>
     </ion-card>
   </div>

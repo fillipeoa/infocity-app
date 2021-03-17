@@ -14,6 +14,7 @@ export class ColaboracoesPage implements OnInit {
   ngOnInit() {}
 
   ionViewWillEnter() {
+    this.colaboracoes = [];
     const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
     const colaboracoes = JSON.parse(localStorage.getItem('colaboracoes'));
 
