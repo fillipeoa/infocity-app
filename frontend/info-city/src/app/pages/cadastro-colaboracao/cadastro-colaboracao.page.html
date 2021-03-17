@@ -15,36 +15,36 @@
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Título</ion-label>
-        <ion-input type="titulo"></ion-input>
+        <ion-input type="titulo" [(ngModel)]="colaboracao.titulo"></ion-input>
       </ion-item>
 
       
       <ion-item class="ion-margin">
         <ion-label position="floating">Descrição</ion-label>
-        <ion-textarea type="descricao"></ion-textarea>
+        <ion-textarea type="descricao" [(ngModel)]="colaboracao.descricao"></ion-textarea>
       </ion-item>
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Rua</ion-label>
-        <ion-input type="rua"></ion-input>
+        <ion-input type="rua" [(ngModel)]="colaboracao.rua"></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Número</ion-label>
-        <ion-input type="numero"></ion-input>
+        <ion-input type="numero" [(ngModel)]="colaboracao.numero"></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Bairro</ion-label>
-        <ion-input type="bairro"></ion-input>
+        <ion-input type="bairro" [(ngModel)]="colaboracao.bairro"></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Complemento</ion-label>
-        <ion-input type="complemento"></ion-input>
+        <ion-input type="complemento"  [(ngModel)]="colaboracao.complemento"></ion-input>
       </ion-item>
 
-      <ion-button expand="block" color="primary" class="ion-margin" shape="round">Criar</ion-button>
+      <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="criar()">Criar</ion-button>
      
      
     </div>
