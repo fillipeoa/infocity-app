@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColaboracoesPage implements OnInit {
 
+  colaboracoes = [];
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.colaboracoes = [];
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const colaboracoes = JSON.parse(localStorage.getItem('colaboracoes'));
+
+    for (const colaboracao of colaboracoes) {
+      if (colaboracao.id_usuario == usuario.id) {
+        this.colaboracoes.push(colaboracao);
+      }
+    }
   }
 
 }
