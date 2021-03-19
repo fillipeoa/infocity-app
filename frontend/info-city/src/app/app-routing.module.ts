@@ -25,7 +25,8 @@ const routes: Routes = [
   {
     path: 'detalhe-colaboracao',
     loadChildren: () => import('./pages/detalhe-colaboracao/detalhe-colaboracao.module').then( m => m.DetalheColaboracaoPageModule)
-  },  {
+  },
+  {
     path: 'cadastro-colaboracao',
     loadChildren: () => import('./pages/cadastro-colaboracao/cadastro-colaboracao.module').then( m => m.CadastroColaboracaoPageModule)
   }
