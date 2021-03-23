@@ -1,6 +1,8 @@
 package com.infocity.api.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -66,6 +69,9 @@ public class Usuario {
 	
 	@Column(name="updated_at", nullable = false)
 	private Date updated_at;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private List<Colaboracao> colaboracoes = new ArrayList<>();
 	
 	@ManyToMany(cascade = CascadeType.MERGE)
 	@OnDelete(action = OnDeleteAction.CASCADE)
