@@ -8,7 +8,6 @@ import com.infocity.api.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	
-	Usuario findByEmail(String email);
-	Usuario findByNome(String nome);
+	Usuario findById(int id);
 	Usuario findByUserName(String userName);
 }
