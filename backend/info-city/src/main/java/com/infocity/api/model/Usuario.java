@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -69,6 +70,10 @@ public class Usuario {
 	
 	@Column(name="updated_at", nullable = false)
 	private Date updated_at;
+	
+	@ManyToOne
+	@JoinColumn(name = "cidade_id")
+	private Cidade cidade;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	private List<Colaboracao> colaboracoes = new ArrayList<>();
@@ -150,6 +155,15 @@ public class Usuario {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+	
 	
 	
 	
