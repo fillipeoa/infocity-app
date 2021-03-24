@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
@@ -20,12 +18,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "tbcidade")
-public class Cidade {
+@Entity(name = "tbestado")
+public class Estado {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,12 +34,14 @@ public class Cidade {
 	@NotEmpty(message = "*Por favor digite um Nome de Usuário")
 	private String nome;
 	
-	@ManyToOne
-	@JoinColumn(name = "estado_id")
-	private Estado estado;
+	@Column(name = "abreviacao", nullable = false)
+	@Length(min = 2, message = "*a abreviacao deve ter 2characteres")
+	@Length(max = 2, message = "*a abreviacao deve ter 2characteres")
+	@NotEmpty(message = "*Por favor digite um Nome de Usuário")
+	private String abreviacao;
 	
-	@OneToMany(mappedBy = "cidade", cascade = CascadeType.ALL)
-	private List<Usuario> usuarios = new ArrayList<>();
+	@OneToMany(mappedBy = "estado", cascade = CascadeType.ALL)
+	private List<Cidade> cidades = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -59,15 +58,13 @@ public class Cidade {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public Estado getEstado() {
-		return estado;
+	
+	public String getAbreviacao() {
+		return abreviacao;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setAbreviacao(String abreviacao) {
+		this.abreviacao = abreviacao;
 	}
-	
-	
 
 }
