@@ -1,0 +1,43 @@
+
+<ion-header>
+  <ion-toolbar class="toolbar-verde">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="index" color="secondary"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img class="logo" src="../../../assets/icon/logo2.png" alt="">
+  <div class="fundo">
+   <h1 class="titulo">Dados pessoais</h1>
+    <div class="form">
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="nome"  [(ngModel)]="usuario.nome"></ion-input>
+      </ion-item>
+
+      
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email"  [(ngModel)]="usuario.email"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password"  [(ngModel)]="usuario.password"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Foto</ion-label>
+        <ion-input type="foto"  [(ngModel)]="usuario.foto"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="continuar()">Continuar</ion-button>
+     
+     
+    </div>
+  </div>
+
+</ion-content>

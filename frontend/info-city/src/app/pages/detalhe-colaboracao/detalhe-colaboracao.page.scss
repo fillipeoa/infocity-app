@@ -1,0 +1,91 @@
+@font-face {
+    font-family: Abel;
+    src: url(../../../assets/fonts/Abel-Regular.ttf);
+}
+
+ion-header{
+    --ion-background-color: var( --ion-color-primary);
+}
+
+ion-card{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.titulo{
+    width: 100%;
+    text-align: center;
+
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 50px;
+
+    color:var( --ion-color-secondary);
+}
+
+.nome{
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+}
+
+.cardTitulo{
+    width: 100%;
+    text-align: center;
+
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+}
+
+.descricao{
+    width: 100%;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.endereco{
+    width: 100%;
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.tituloEndereco{
+    width: 100%;
+    text-align: center;
+
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.data{
+    position: relative;
+    display: block;
+    float: left;
+    padding-top: 2%;
+
+    font-family: Abel;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.estrelas{
+    position: relative;
+    display: block;
+    float: right;
+    padding-top: 2%;
+}

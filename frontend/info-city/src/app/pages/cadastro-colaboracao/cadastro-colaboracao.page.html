@@ -1,0 +1,58 @@
+
+<ion-header>
+  <ion-toolbar class="toolbar-verde">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="index" color="secondary"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img class="logo" src="../../../assets/icon/logo2.png" alt="">
+  <div class="fundo">
+   <h1 class="titulo">Nova Colaboração</h1>
+    <div class="form">
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Título</ion-label>
+        <ion-input type="titulo" [(ngModel)]="colaboracao.titulo"></ion-input>
+      </ion-item>
+
+      
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-textarea type="descricao" [(ngModel)]="colaboracao.descricao"></ion-textarea>
+      </ion-item>
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Cidade</ion-label>
+        <ion-input type="text" [(ngModel)]="colaboracao.cidade"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Rua</ion-label>
+        <ion-input type="rua" [(ngModel)]="colaboracao.rua"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Número</ion-label>
+        <ion-input type="numero" [(ngModel)]="colaboracao.numero"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Bairro</ion-label>
+        <ion-input type="bairro" [(ngModel)]="colaboracao.bairro"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Complemento</ion-label>
+        <ion-input type="complemento"  [(ngModel)]="colaboracao.complemento"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="criar()">Criar</ion-button>
+     
+     
+    </div>
+  </div>
+
+</ion-content>

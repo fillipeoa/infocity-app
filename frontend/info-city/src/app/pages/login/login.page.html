@@ -2,7 +2,7 @@
 <ion-header>
   <ion-toolbar >
     <ion-buttons slot="start">
-      <ion-back-button color="secondary" defaultHref="home"></ion-back-button>
+      <ion-back-button color="secondary" defaultHref="index"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -15,15 +15,15 @@
     <div class="form">
       <ion-item class="ion-margin">
         <ion-label position="floating">Email</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email"[(ngModel)]="login.email"></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="login.senha"></ion-input>
       </ion-item>
 
-      <ion-button expand="block" collor="primary" shape="round" class="ion-margin">Entrar</ion-button>
+      <ion-button expand="block" collor="primary" shape="round" class="ion-margin" (click)="entrar()">Entrar</ion-button>
     </div>
   </div>
 

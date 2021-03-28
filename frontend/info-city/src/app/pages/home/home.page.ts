@@ -6,7 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  colaboracoes = [];
+  usuario = JSON.parse(localStorage.getItem('usuarioLogado'));;
 
-  constructor() {}
+  constructor() { }
+
+  ionViewWillEnter() {
+    this.colaboracoes = [];
+    const colaboracoes = JSON.parse(localStorage.getItem('colaboracoes'));
+
+    for (const colaboracao of colaboracoes) {
+      if (colaboracao.cidade == this.usuario.cidade) {
+        this.colaboracoes.push(colaboracao);
+      }
+    }
+  }
 
 }

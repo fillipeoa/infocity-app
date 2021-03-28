@@ -1,14 +1,33 @@
 <ion-header>
- 
+  <ion-toolbar>
+    <img class="logo" src="../../../assets/icon/logo2.png" alt="" />
+    <h2 class="titulo">Colaborações de {{usuario.cidade}}</h2>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <div class="cards">
+    <ion-card *ngFor="let colaboracao of colaboracoes">
+      <ion-card-header>
+        <ion-card-title>
+            <ion-item>
+                <ion-avatar slot="start">
+                  <img src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4-300x300.png">
+                </ion-avatar>
+                <ion-label>{{colaboracao.titulo}}</ion-label>
+              </ion-item>
+        </ion-card-title>
+      </ion-card-header>
 
-  <img class="logo" src="../../../assets/icon/logo2.png" alt="">
-
-  <div class="botoes">
-    <ion-button expand="block" shape="round" class="ion-margin botaoLogin">Logar</ion-button>
-    <ion-button expand="block" shape="round" class="ion-margin botaoCadastro">Cadastrar</ion-button>
+      <ion-card-content>
+       {{colaboracao.descricao}}
+      </ion-card-content>
+    </ion-card>
   </div>
-</ion-content>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button href="cadastro-colaboracao">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
