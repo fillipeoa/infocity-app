@@ -6,8 +6,9 @@ import org.springframework.stereotype.Repository;
 import com.infocity.api.model.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
-
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+	
+	Usuario findById(int id);
+	Usuario findByUserName(String userName);
 	Usuario findByEmail(String email);
-	Usuario findByNome(String nome);
 }
