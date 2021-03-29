@@ -3,9 +3,9 @@ import { Usuario } from "../usuario/usuario";
 
 export interface Colaboracao {
     id: number;
-    usuario: Usuario;
+    //usuario: Usuario;
     titulo: String;
-    Descricao: String;
+    descricao: String;
     numero: number;
     rua: String;
     bairro: String;

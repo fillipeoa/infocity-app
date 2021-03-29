@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Colaboracao } from 'src/app/interfaces/colaboracao/colaboracao';
 
 @Component({
   selector: 'app-cadastro-colaboracao',
@@ -8,19 +10,43 @@ import { Router } from '@angular/router';
 })
 export class CadastroColaboracaoPage implements OnInit {
 
-  colaboracao = {
+  colaboracao: Colaboracao = {
     id: null,
-    id_usuario: null,
     titulo: null,
     descricao: null,
-    cidade: null,
+    cidade: {
+      id: null, 
+      nome: null, 
+      estado:{
+        id: null, 
+        nome: null, 
+        abreviacao: null,
+      }
+    },
     rua: null,
     numero: null,
     bairro: null,
-    complemento: null
+    complemento: null,
+    latitude: null, 
+    longitude: null, 
+    created_at: null, 
+    updated_at: null
   }
 
-  constructor( private router: Router) { }
+  formGroup: FormGroup;
+
+  constructor( private router: Router, private formBuilder: FormBuilder) { 
+    this.formGroup = this.formBuilder.group({
+      titulo: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      descricao: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      estado: ['', Validators.compose([Validators.required])],
+      cidade: ['', Validators.compose([Validators.required])],
+      rua: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      numero: ['', Validators.compose([Validators.required])],
+      bairro: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      complemento: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+    });
+  }
 
   ngOnInit() {}
 
@@ -34,7 +60,7 @@ export class CadastroColaboracaoPage implements OnInit {
     }
 
     this.colaboracao.id = colaboracoes.length + 1;
-    this.colaboracao.id_usuario = usuario.id;
+    //this.colaboracao.id_usuario = usuario.id;
     colaboracoes.push(this.colaboracao);
     localStorage.setItem('colaboracoes', JSON.stringify(colaboracoes));
 
