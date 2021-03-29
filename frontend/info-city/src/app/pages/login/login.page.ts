@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
@@ -8,13 +9,20 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   login = {
     email: null,
     senha: null
   }
 
-  constructor(private router: Router,  public toastController: ToastController) { }
+  formGroup: FormGroup
+
+  constructor(private router: Router,  public toastController: ToastController, private formBuilder: FormBuilder) {
+    this.formGroup = this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      senha: ['', Validators.compose([Validators.required])],
+    });
+
+   }
 
   ngOnInit() {}
 
