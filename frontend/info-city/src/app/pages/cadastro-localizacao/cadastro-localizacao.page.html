@@ -11,19 +11,28 @@
   <img class="logo" src="../../../assets/icon/logo2.png" alt="">
   <div class="fundo">
    <h1 class="titulo">Localização</h1>
-    <div class="form">
+    <div class="form"  [formGroup]="formGroup">
+
+      <ion-item class="ion-margin">
+        <ion-label position="floating">Estado</ion-label>
+        <ion-select [(ngModel)]="usuario.cidade.estado.id" formControlName="estado" okText="Ok" cancelText="Cancelar">
+          <ion-select-option value="1">Brown</ion-select-option>
+          <ion-select-option value="2">Blonde</ion-select-option>
+          <ion-select-option value="3">Black</ion-select-option>
+          <ion-select-option value="4">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Cidade</ion-label>
-        <ion-input type="text" [(ngModel)]="usuario.cidade"></ion-input>
+        <ion-select [(ngModel)]="usuario.cidade.id" formControlName="cidade" okText="Ok" cancelText="Cancelar">
+          <ion-select-option value="1">Brown</ion-select-option>
+          <ion-select-option value="2">Blonde</ion-select-option>
+          <ion-select-option value="3">Black</ion-select-option>
+          <ion-select-option value="4">Red</ion-select-option>
+        </ion-select>
       </ion-item>
-
-      <ion-item class="ion-margin">
-        <ion-label position="floating">Bairro</ion-label>
-        <ion-input type="text" [(ngModel)]="usuario.bairro"></ion-input>
-      </ion-item>
-
-      <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="cadastrar()">Concluir</ion-button>
+      <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="cadastrar()" [disabled]="!formGroup.valid">Concluir</ion-button>
      
      
     </div>

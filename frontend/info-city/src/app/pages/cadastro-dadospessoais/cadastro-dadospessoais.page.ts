@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/interfaces/usuario/usuario';
 
 @Component({
   selector: 'app-cadastro-dadospessoais',
@@ -7,17 +9,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastro-dadospessoais.page.scss'],
 })
 export class CadastroDadospessoaisPage implements OnInit {
-  usuario = {
+  usuario: Usuario = {
     id: null,
     nome: null,
     email: null,
     password: null,
-    foto: null,
     cidade: null,
-    bairro: null
+    userName: null, 
+    created_at: null, 
+    updated_at: null,
+    role: null
   }
 
-  constructor(private router: Router) { }
+  formGroup: FormGroup;
+
+  constructor(private router: Router, private formBuilder: FormBuilder) {
+    this.formGroup = this.formBuilder.group({
+      nome: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      senha: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+    });
+   }
 
   ngOnInit() { }
 

@@ -5,7 +5,7 @@ export interface Usuario {
     id: number;
     nome: String;
     userName: String;
-    passWord: String;
+    password: String;
     email: String;
     cidade: Cidade;
     created_at: Date;

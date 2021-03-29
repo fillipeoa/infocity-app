@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Cidade } from 'src/app/interfaces/cidade/cidade';
+import { Estado } from 'src/app/interfaces/estado/estado';
+import { Usuario } from 'src/app/interfaces/usuario/usuario';
 
 @Component({
   selector: 'app-cadastro-localizacao',
@@ -8,32 +12,47 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CadastroLocalizacaoPage implements OnInit {
 
-  usuario = {
+  Estados: Estado[] = [];
+  Cidades: Cidade[] = [];
+
+  usuario: Usuario = {
     id: null,
     nome: null,
     email: null,
     password: null,
-    foto: null,
-    cidade: null,
-    bairro: null
+    userName: null, 
+    created_at: null, 
+    updated_at: null, 
+    role: null,
+    cidade: {
+      id: null, 
+      nome: null, 
+      estado: {
+        id: null, 
+        nome: null, 
+        abreviacao: null,
+      }
+    },
   }
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  formGroup: FormGroup;
+
+  constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) { 
+    this.formGroup = this.formBuilder.group({
+      estado: ['', Validators.compose([Validators.required])],
+      cidade: ['', Validators.compose([Validators.required])],
+    });
+  }
 
   ionViewWillEnter() {
     const id = this.route.snapshot.paramMap.get('id');
     var usuarios = JSON.parse(localStorage.getItem('usuarios'));
     for (const usuario of usuarios) {
       if (usuario.id == id) {
-       this.usuario = {
-          id: usuario.id,
-          nome: usuario.nome,
-          email: usuario.email,
-          password: usuario.password,
-          foto: usuario.foto,
-          cidade: null,
-          bairro: null
-        }
+        this.usuario.id = usuario.id;
+        this.usuario.nome = usuario.nome;
+        this.usuario.email = usuario.email;
+        this.usuario.password = usuario.password;
       }
     }
   }
