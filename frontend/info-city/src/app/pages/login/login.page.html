@@ -12,18 +12,18 @@
 
   <div class="fundo">
    <h1 class="titulo">Login</h1>
-    <div class="form">
+    <div class="form" [formGroup]="formGroup">
       <ion-item class="ion-margin">
         <ion-label position="floating">Email</ion-label>
-        <ion-input type="email"[(ngModel)]="login.email"></ion-input>
+        <ion-input type="email" [(ngModel)]="login.email" formControlName="email"></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password" [(ngModel)]="login.senha"></ion-input>
+        <ion-input type="password" [(ngModel)]="login.senha" formControlName="senha"></ion-input>
       </ion-item>
 
-      <ion-button expand="block" collor="primary" shape="round" class="ion-margin" (click)="entrar()">Entrar</ion-button>
+      <ion-button expand="block" collor="primary" shape="round" class="ion-margin" (click)="entrar()" [disabled]="!formGroup.valid">Entrar</ion-button>
     </div>
   </div>
 
