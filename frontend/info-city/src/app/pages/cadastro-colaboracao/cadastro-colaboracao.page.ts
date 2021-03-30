@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Colaboracao } from 'src/app/interfaces/colaboracao/colaboracao';
+import { Estado } from 'src/app/interfaces/estado/estado';
+import { Cidade } from 'src/app/interfaces/cidade/cidade';
+import { EstadoService } from 'src/app/sevices/estado/estado.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cadastro-colaboracao',
@@ -9,6 +13,10 @@ import { Colaboracao } from 'src/app/interfaces/colaboracao/colaboracao';
   styleUrls: ['./cadastro-colaboracao.page.scss'],
 })
 export class CadastroColaboracaoPage implements OnInit {
+
+  estados: Estado[] = [];
+  cidades: Cidade[] = [];
+  cidade: Cidade = null;
 
   colaboracao: Colaboracao = {
     id: 0,
@@ -36,7 +44,7 @@ export class CadastroColaboracaoPage implements OnInit {
 
   formGroup: FormGroup;
 
-  constructor( private router: Router, private formBuilder: FormBuilder) { 
+  constructor( private router: Router, private formBuilder: FormBuilder, private estadoService: EstadoService, public toastController: ToastController) { 
     this.formGroup = this.formBuilder.group({
       titulo: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       descricao: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
@@ -47,12 +55,38 @@ export class CadastroColaboracaoPage implements OnInit {
       bairro: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       complemento: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
     });
+
+    this.getEstados();
   }
 
   ngOnInit() {}
 
-  criar(){
+  criar(){}
+
+  getEstados(){
+    this.estadoService.getEstados()
+    .then(data => {
+      if (data) {
+        this.estados = data;
+        console.log(this.estados);
+      }
+    }).catch((err) => {
+      this.exibirMensagem('Erro ao conectar com o banco de dados. Tente novamente mais tarde.');
+    }
+    );
+  }
+
+  getCidades(){
     
+  }
+
+  async exibirMensagem(menssagem: string) {
+    const toast = await this.toastController.create({
+      message: menssagem,
+      duration: 2000,
+      color: "danger"
+    });
+    toast.present();
   }
 
 }

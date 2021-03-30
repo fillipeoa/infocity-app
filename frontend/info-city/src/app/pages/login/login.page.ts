@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
     this.loginService.authenticate(this.login.email, this.login.senha)
       .then(data => {
         if(data){
-          environment.token =  data;
+          localStorage.setItem('token', JSON.stringify(data));
         }
   
       }).catch((err) => {
