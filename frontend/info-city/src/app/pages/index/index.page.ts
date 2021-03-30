@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  irParaLogin(){
+    this.router.navigateByUrl("/login");
+  }
+
+  irParaCadastrar(){
+    this.router.navigateByUrl("/cadastro-dadospessoais");
   }
 
 }
