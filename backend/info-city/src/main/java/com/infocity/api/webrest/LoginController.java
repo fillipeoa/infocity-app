@@ -21,7 +21,7 @@ public class LoginController {
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
         Usuario user = new Usuario();
-        user.setNome("Meu Nome");
+        user.setUserName("Meu Nome");
         modelAndView.addObject("user", user);
         modelAndView.setViewName("registration");
         return modelAndView;

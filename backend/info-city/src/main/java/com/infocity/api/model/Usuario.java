@@ -42,11 +42,6 @@ public class Usuario {
 	@Column(name = "id", nullable = false)
 	private int id;
 	
-	@Column(name = "nome", nullable = false)
-	@Length(min = 5, message = "*Seu Nome ter pelo menos 5 characteres")
-	@NotEmpty(message = "*Por favor digite um Nome de Usuário")
-	private String nome;
-	
 	@Column(name = "userName", nullable = false)
 	@Length(min = 5, message = "*Seu Nome de Usuário deve ter pelo menos 5 characteres")
 	@NotEmpty(message = "*Por favor digite um Nome de Usuário")
@@ -90,14 +85,6 @@ public class Usuario {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public String getUserName() {

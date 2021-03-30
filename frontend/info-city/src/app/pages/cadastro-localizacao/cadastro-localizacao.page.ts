@@ -4,6 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cidade } from 'src/app/interfaces/cidade/cidade';
 import { Estado } from 'src/app/interfaces/estado/estado';
 import { Usuario } from 'src/app/interfaces/usuario/usuario';
+import { EstadoService } from 'src/app/sevices/estado/estado.service';
+import { CidadeService } from 'src/app/sevices/cidade/cidade.service';
+import { ToastController } from '@ionic/angular';
+import { UsuarioService } from 'src/app/sevices/usuario/usuario.service';
 
 @Component({
   selector: 'app-cadastro-localizacao',
@@ -11,25 +15,24 @@ import { Usuario } from 'src/app/interfaces/usuario/usuario';
   styleUrls: ['./cadastro-localizacao.page.scss'],
 })
 export class CadastroLocalizacaoPage implements OnInit {
-
-  Estados: Estado[] = [];
-  Cidades: Cidade[] = [];
+  estados: Estado[] = [];
+  cidades: Cidade[] = [];
+  cidadesEstado: Cidade[] = [];
 
   usuario: Usuario = {
     id: 0,
-    nome: '',
     email: '',
     password: '',
-    userName: '', 
-    created_at: null, 
-    updated_at: null, 
+    userName: '',
+    created_at: null,
+    updated_at: null,
     role: null,
     cidade: {
-      id: 0, 
-      nome: '', 
+      id: 0,
+      nome: '',
       estado: {
-        id: 0, 
-        nome: '', 
+        id: 0,
+        nome: '',
         abreviacao: '',
       }
     },
@@ -37,7 +40,7 @@ export class CadastroLocalizacaoPage implements OnInit {
 
   formGroup: FormGroup;
 
-  constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) { 
+  constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private estadoService: EstadoService, private cidadeService: CidadeService, private toastController: ToastController, private usuarioService: UsuarioService) {
     this.formGroup = this.formBuilder.group({
       estado: ['', Validators.compose([Validators.required])],
       cidade: ['', Validators.compose([Validators.required])],
@@ -45,30 +48,70 @@ export class CadastroLocalizacaoPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    const id = this.route.snapshot.paramMap.get('id');
-    var usuarios = JSON.parse(localStorage.getItem('usuarios'));
-    for (const usuario of usuarios) {
-      if (usuario.id == id) {
-        this.usuario.id = usuario.id;
-        this.usuario.nome = usuario.nome;
-        this.usuario.email = usuario.email;
-        this.usuario.password = usuario.password;
+    this.usuario = JSON.parse(localStorage.getItem('cadastroUsuario'));
+    this.getEstados();
+    this.getCidades();
+  }
+
+  getEstados() {
+    this.estadoService.getEstados()
+      .then(data => {
+        if (data) {
+          this.estados = data;
+        }
+      }).catch((err) => {
+        this.exibirMensagem('Erro ao conectar com o banco de dados. Tente novamente mais tarde.');
+      }
+      );
+  }
+
+  getCidades() {
+    this.cidadeService.getCidades()
+      .then(data => {
+        if (data) {
+          this.cidades = data;
+        }
+      }).catch((err) => {
+        this.exibirMensagem('Erro ao conectar com o banco de dados. Tente novamente mais tarde.');
+      }
+      );
+
+  }
+
+  getCidadesDoEstado() {
+    this.cidadesEstado = [];
+    this.usuario.cidade.id = 0;
+    for (const cidade of this.cidades) {
+      if (cidade.estado.id == this.usuario.cidade.estado.id) {
+        this.cidadesEstado.push(cidade);
       }
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  cadastrar(){
-    var usuarios = JSON.parse(localStorage.getItem('usuarios'));
-    for (let index = 0; index < usuarios.length; index++) {
-      if (usuarios[index].id == this.usuario.id) {
-        usuarios[index] = this.usuario;
+  cadastrar() {    
+    this.usuarioService.createUsuario(this.usuario)
+    .then(data => {
+      if (data) {
+        console.log(data);
+        localStorage.setItem("usuarioLogado", JSON.stringify(this.usuario));
+        localStorage.removeItem("cadastroUsuario");
+        this.router.navigateByUrl("/home")
       }
-    }
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    localStorage.setItem('usuarioLogado', JSON.stringify(this.usuario));
-    this.router.navigate(['/home']);
+
+    }).catch((err) => {
+      this.exibirMensagem('falha ao cadastrar usuario');
+    });
+  }
+
+  async exibirMensagem(menssagem: string) {
+    const toast = await this.toastController.create({
+      message: menssagem,
+      duration: 2000,
+      color: "danger"
+    });
+    toast.present();
   }
 
 }
