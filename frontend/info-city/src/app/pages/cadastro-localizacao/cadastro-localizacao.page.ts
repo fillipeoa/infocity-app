@@ -16,21 +16,21 @@ export class CadastroLocalizacaoPage implements OnInit {
   Cidades: Cidade[] = [];
 
   usuario: Usuario = {
-    id: null,
-    nome: null,
-    email: null,
-    password: null,
-    userName: null, 
+    id: 0,
+    nome: '',
+    email: '',
+    password: '',
+    userName: '', 
     created_at: null, 
     updated_at: null, 
     role: null,
     cidade: {
-      id: null, 
-      nome: null, 
+      id: 0, 
+      nome: '', 
       estado: {
-        id: null, 
-        nome: null, 
-        abreviacao: null,
+        id: 0, 
+        nome: '', 
+        abreviacao: '',
       }
     },
   }

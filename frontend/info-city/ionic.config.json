@@ -1,5 +1,7 @@
 {
   "name": "info-city",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
