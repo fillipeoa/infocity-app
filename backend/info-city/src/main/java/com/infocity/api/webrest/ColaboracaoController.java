@@ -27,7 +27,7 @@ import com.infocity.api.service.ColaboracaoService;
 
 
 @Controller
-@RequestMapping("/public/colaboracoes")
+@RequestMapping("/colaboracoes")
 public class ColaboracaoController {
 
 	private final Logger log = LoggerFactory.getLogger(ColaboracaoService.class);

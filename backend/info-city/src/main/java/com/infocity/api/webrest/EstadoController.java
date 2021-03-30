@@ -25,7 +25,7 @@ import com.infocity.api.service.EstadoService;
 
 
 @Controller
-@RequestMapping("/public/estados")
+@RequestMapping("/estados")
 public class EstadoController {
 	
 	private final Logger log = LoggerFactory.getLogger(EstadoService.class);

@@ -25,7 +25,7 @@ import com.infocity.api.service.UsuarioService;
 
 
 @Controller
-@RequestMapping("/public/usuarios")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 	private final Logger log = LoggerFactory.getLogger(UsuarioService.class);
 

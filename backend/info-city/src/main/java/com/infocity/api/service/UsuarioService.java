@@ -50,7 +50,10 @@ public class UsuarioService {
 		usuario =  usuarioRepository.save( usuario);
 		return usuario;
 	}
-	
+
+	Usuario getByEmail(String email){
+		return usuarioRepository.findByEmail(email);
+	}
 	
 	public Usuario findOne(int id) {
 		return  usuarioRepository.findById(id);

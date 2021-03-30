@@ -24,7 +24,7 @@ import com.infocity.api.model.Cidade;
 import com.infocity.api.service.CidadeService;
 
 @Controller
-@RequestMapping("/public/cidades")
+@RequestMapping("/cidades")
 public class CidadeController {
 	
 	private final Logger log = LoggerFactory.getLogger(CidadeService.class);
