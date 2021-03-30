@@ -71,11 +71,10 @@ public class Colaboracao {
 	@Length(min = 5, message = "*O complemento deve ter pelo menos 5 characteres")
 	@NotEmpty(message = "*Por favor digite um complemento")
 	private String complemento;
-	
-	@Column(name = "cidade", nullable = false)
-	@Length(min = 5, message = "*A cidade deve ter pelo menos 5 characteres")
-	@NotEmpty(message = "*Por favor digite uma cidade")
-	private String cidade;
+
+	@ManyToOne
+	@JoinColumn(name = "cidade_id")
+	private Cidade cidade;
 	
 	@Column(name = "flagSituacao", nullable = false)
 	private int flagSituacao;
@@ -166,11 +165,11 @@ public class Colaboracao {
 		this.complemento = complemento;
 	}
 
-	public String getCidade() {
+	public Cidade getCidade() {
 		return cidade;
 	}
 
-	public void setCidade(String cidade) {
+	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
 
