@@ -17,11 +17,8 @@ export class EstadoService {
         headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token.token}
       };
 
-      console.log(options);
-
       this.http.get<Estado[]>(environment.api + '/estados/', options).subscribe(data => {
         resolve(data);
-        console.log(data);
       },
         err => {
           console.log(err);

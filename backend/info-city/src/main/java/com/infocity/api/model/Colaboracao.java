@@ -44,9 +44,6 @@ public class Colaboracao {
 	@NotEmpty(message = "*Por favor digite uma descrição ")
 	private String descricao;
 	
-	@Column(name = "dataRegistro", nullable = false)
-	private Date dataRegistro;
-	
 	@Column(name = "latitude", nullable = false)
 	private Double latitide;
 	
@@ -72,10 +69,9 @@ public class Colaboracao {
 	@NotEmpty(message = "*Por favor digite um complemento")
 	private String complemento;
 	
-	@Column(name = "cidade", nullable = false)
-	@Length(min = 5, message = "*A cidade deve ter pelo menos 5 characteres")
-	@NotEmpty(message = "*Por favor digite uma cidade")
-	private String cidade;
+	@ManyToOne
+	@JoinColumn(name = "cidade_id")
+	private Cidade cidade;
 	
 	@Column(name = "flagSituacao", nullable = false)
 	private int flagSituacao;
@@ -108,14 +104,6 @@ public class Colaboracao {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public Date getDataRegistro() {
-		return dataRegistro;
-	}
-
-	public void setDataRegistro(Date dataRegistro) {
-		this.dataRegistro = dataRegistro;
 	}
 
 	public Double getLatitide() {
@@ -166,11 +154,11 @@ public class Colaboracao {
 		this.complemento = complemento;
 	}
 
-	public String getCidade() {
+	public Cidade getCidade() {
 		return cidade;
 	}
 
-	public void setCidade(String cidade) {
+	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
 
