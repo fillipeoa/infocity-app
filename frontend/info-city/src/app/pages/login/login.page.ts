@@ -39,6 +39,8 @@ export class LoginPage implements OnInit {
       .then(data => {
         if(data){
           localStorage.setItem('token', JSON.stringify(data));
+          this.getUsuarioLogin();
+          this.router.navigateByUrl("/home")
         }
   
       }).catch((err) => {
@@ -47,6 +49,17 @@ export class LoginPage implements OnInit {
 
   }
 
+  
+  getUsuarioLogin(){
+    this.loginService.getUsuarioLogin(this.login.email, this.login.senha)
+      .then(data => {
+        if(data){
+          localStorage.setItem('usuarioLogado', JSON.stringify(data));
+        }
+      }).catch((err) => {
+        this.exibirMensagem('Email ou senha incorretos');
+      });
+  }
   async exibirMensagem(menssagem: string) {
     const toast = await this.toastController.create({
       message: menssagem,

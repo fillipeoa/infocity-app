@@ -28,6 +28,18 @@ export class LoginService {
             console.log(error);
           })
     });
+  }
 
+  getUsuarioLogin(email: String, senha: String){
+    return new Promise((resolve, reject) => {
+      this.http.get(environment.api + '/getUsuarioLogin?password='+senha+'&username='+email).
+        subscribe((result) => { 
+          resolve(result); 
+        },
+          (error) => {
+            reject(error.json);
+            console.log(error);
+          })
+    });
   }
 }

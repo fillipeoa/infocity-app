@@ -16,11 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.infocity.api.config.JwtTokenUtil;
 import com.infocity.api.model.JwtRequest;
 import com.infocity.api.model.JwtResponse;
+import com.infocity.api.model.Usuario;
 import com.infocity.api.service.JwtUserDetailsService;
+import com.infocity.api.service.UsuarioService;
 
 @RestController
 @CrossOrigin
 public class JwtAuthenticationController {
+	
+	private final UsuarioService usuarioService;
+
+	public JwtAuthenticationController(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
+	}
+
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -49,4 +58,14 @@ public class JwtAuthenticationController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
+    
+    @RequestMapping(value = "/getUsuarioLogin", method = RequestMethod.GET)
+	public Usuario login(String username, String password) throws Exception {
+		authenticate(username, password);
+		final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+		Usuario user = usuarioService.findUserByEmail(userDetails.getUsername());
+		return user;
+	}
+
+   
 }

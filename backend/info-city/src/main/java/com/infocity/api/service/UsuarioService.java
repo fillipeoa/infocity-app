@@ -31,6 +31,10 @@ public class UsuarioService {
 	 public Usuario findUserByUserName(String userName) {
 		 return usuarioRepository.findByUserName(userName);
 	 }
+	 
+	 public Usuario findUserByEmail(String email) {
+		 return usuarioRepository.findByEmail(email);
+	 }
 	
 	public Usuario save(Usuario  usuario) {
 		log.debug("Request to save  usuario : {}",  usuario);
