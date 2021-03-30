@@ -17,7 +17,7 @@ export class ColaboracaoService {
       const options = {
         headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token.token}
       };
-      this.http.post(environment.api + '/colaboracoes/', colaboracao, options).
+      this.http.post(environment.api + '/colaboracoes/', colaboracao).
         subscribe((result) => { 
           resolve(result); 
           console.log(result);

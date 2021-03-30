@@ -34,7 +34,11 @@ public class ColaboracaoService {
 		Date date = new Date();
 		colaboracao.setCreated_at(date);
 		colaboracao.setUpdated_at(date);
-		colaboracao =  colaboracaoRepository.save( colaboracao);
+		
+		colaboracao.setLatitide(0.0);
+		colaboracao.setLongitude(0.0);
+		
+		colaboracao =  colaboracaoRepository.save(colaboracao);
 		return colaboracao;
 	}
 	
