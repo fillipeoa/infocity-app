@@ -10,12 +10,12 @@ import { Usuario } from 'src/app/interfaces/usuario/usuario';
 })
 export class CadastroDadospessoaisPage implements OnInit {
   usuario: Usuario = {
-    id: null,
-    nome: null,
-    email: null,
-    password: null,
+    id: 0,
+    nome: '',
+    email: '',
+    password: '',
     cidade: null,
-    userName: null, 
+    userName: '', 
     created_at: null, 
     updated_at: null,
     role: null

@@ -11,24 +11,25 @@ import { Colaboracao } from 'src/app/interfaces/colaboracao/colaboracao';
 export class CadastroColaboracaoPage implements OnInit {
 
   colaboracao: Colaboracao = {
-    id: null,
-    titulo: null,
-    descricao: null,
+    id: 0,
+    titulo: '',
+    descricao: '',
     cidade: {
-      id: null, 
-      nome: null, 
+      id: 0, 
+      nome: '', 
       estado:{
-        id: null, 
-        nome: null, 
-        abreviacao: null,
+        id: 0, 
+        nome: '', 
+        abreviacao: '',
       }
     },
-    rua: null,
-    numero: null,
-    bairro: null,
-    complemento: null,
-    latitude: null, 
-    longitude: null, 
+    usuario: null,
+    rua: '',
+    numero: 0,
+    bairro: '',
+    complemento: '',
+    latitude: 0, 
+    longitude: 0, 
     created_at: null, 
     updated_at: null
   }

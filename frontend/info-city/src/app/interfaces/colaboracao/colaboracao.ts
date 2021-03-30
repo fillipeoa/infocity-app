@@ -3,7 +3,7 @@ import { Usuario } from "../usuario/usuario";
 
 export interface Colaboracao {
     id: number;
-    //usuario: Usuario;
+    usuario: Usuario;
     titulo: String;
     descricao: String;
     numero: number;
