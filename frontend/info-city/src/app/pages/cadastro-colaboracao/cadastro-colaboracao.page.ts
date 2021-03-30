@@ -52,20 +52,7 @@ export class CadastroColaboracaoPage implements OnInit {
   ngOnInit() {}
 
   criar(){
-    var colaboracoes = JSON.parse(localStorage.getItem('colaboracoes'));
-    var usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
-
-    if (colaboracoes == null) {
-      colaboracoes = [];
-      localStorage.setItem('colaboracoes', JSON.stringify(colaboracoes));
-    }
-
-    this.colaboracao.id = colaboracoes.length + 1;
-    //this.colaboracao.id_usuario = usuario.id;
-    colaboracoes.push(this.colaboracao);
-    localStorage.setItem('colaboracoes', JSON.stringify(colaboracoes));
-
-    this.router.navigate(['colaboracoes']);
+    
   }
 
 }
