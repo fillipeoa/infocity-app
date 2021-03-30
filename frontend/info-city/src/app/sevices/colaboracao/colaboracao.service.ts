@@ -45,4 +45,20 @@ export class ColaboracaoService {
         });
     });
   }
+
+  getColaboracoesUsuarioLogado(id: number) {
+    return new Promise<Colaboracao[]>(resolve => {
+      var token = JSON.parse(localStorage.getItem('token'));
+      const options = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+      };
+
+      this.http.get<Colaboracao[]>(environment.api + '/colaboracoes/usuario/' + id, options).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          console.log(err);
+        });
+    });
+  }
 }
