@@ -68,6 +68,18 @@ public class ColaboracaoController {
         }
 
     }
+	
+	@GetMapping("/cidade/{id}")
+    public ResponseEntity<List<Colaboracao>> getColaboracaosByCidade(@PathVariable int id){
+        log.debug("REST request to get Colaboracao By id da cidade : {}", id);
+        List<Colaboracao> colaboracoes = colaboracaoService.findAllByCidadeId(id);
+        if(colaboracoes.size() > 0) {
+            return ResponseEntity.ok().body(colaboracoes);
+        }else{
+            return ResponseEntity.noContent().build();
+        }
+
+    }
 
 	@PostMapping("/")
 	public ResponseEntity<Colaboracao> criarColaboracao(@Valid @RequestBody Colaboracao colaboracao) throws URISyntaxException {

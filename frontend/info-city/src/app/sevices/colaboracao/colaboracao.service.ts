@@ -10,16 +10,16 @@ export class ColaboracaoService {
 
   constructor(private http: HttpClient) { }
 
-  createColaboracao(colaboracao: Colaboracao){
+  createColaboracao(colaboracao: Colaboracao) {
     return new Promise((resolve, reject) => {
       console.log(colaboracao);
       var token = JSON.parse(localStorage.getItem('token'));
       const options = {
-        headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token.token}
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
       };
       this.http.post(environment.api + '/colaboracoes/', colaboracao).
-        subscribe((result) => { 
-          resolve(result); 
+        subscribe((result) => {
+          resolve(result);
           console.log(result);
         },
           (error) => {
@@ -28,5 +28,21 @@ export class ColaboracaoService {
           })
     });
 
+  }
+
+  getColaboracoesPorCidade(id: number) {
+    return new Promise<Colaboracao[]>(resolve => {
+      var token = JSON.parse(localStorage.getItem('token'));
+      const options = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+      };
+
+      this.http.get<Colaboracao[]>(environment.api + '/colaboracoes/cidade/' + id, options).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          console.log(err);
+        });
+    });
   }
 }

@@ -2,7 +2,7 @@
 <ion-header>
   <ion-toolbar class="toolbar-verde">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="index" color="secondary"></ion-back-button>
+      <ion-back-button defaultHref="home" color="secondary"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -59,7 +59,7 @@
         <ion-input type="text"  [(ngModel)]="colaboracao.complemento" formControlName="complemento"></ion-input>
       </ion-item>
 
-      <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="criar()">Criar</ion-button>
+      <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="criar()" [disabled]="!formGroup.valid">Criar</ion-button>
      
      
     </div>

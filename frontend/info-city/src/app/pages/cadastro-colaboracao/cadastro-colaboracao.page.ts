@@ -39,8 +39,8 @@ export class CadastroColaboracaoPage implements OnInit {
       email: '',
       password: '',
       cidade: null,
-      userName: '', 
-      created_at: null, 
+      userName: '',
+      created_at: null,
       updated_at: null,
       role: null
     },
@@ -80,6 +80,7 @@ export class CadastroColaboracaoPage implements OnInit {
       .then(data => {
         if (data) {
           console.log(data);
+          this.router.navigateByUrl("/home")
         }
 
       }).catch((err) => {

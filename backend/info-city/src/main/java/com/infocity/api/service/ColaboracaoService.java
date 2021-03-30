@@ -28,6 +28,10 @@ public class ColaboracaoService {
 	public List<Colaboracao> findAllByUsuarioId(int id){
 		return colaboracaoRepository.findAllByUsuarioId(id);
 	}
+	
+	public List<Colaboracao> findAllByCidadeId(int id){
+		return colaboracaoRepository.findAllByCidadeId(id);
+	}
 
 	public Colaboracao save(Colaboracao  colaboracao) {
 		log.debug("Request to save  colaboracao : {}",  colaboracao);
