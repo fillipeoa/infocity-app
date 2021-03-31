@@ -57,7 +57,7 @@ public class ColaboracaoService {
 	
 	
 	public Colaboracao findOne(int id) {
-		return  colaboracaoRepository.findById(id);
+		return colaboracaoRepository.findById(id);
 	}
 	
 	public void delete(int id) {

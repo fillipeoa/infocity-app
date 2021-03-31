@@ -29,6 +29,42 @@ export class ColaboracaoService {
 
   }
 
+  buscarColaboracao(id) {
+    return new Promise((resolve, reject) => {
+      var token = JSON.parse(localStorage.getItem('token'));
+      const options = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+      };
+      this.http.get(environment.api + '/colaboracoes/' + id).
+        subscribe((result) => {
+          resolve(result);
+        },
+          (error) => {
+            reject(error.json);
+            console.log(error);
+          })
+    });
+  }
+
+  updateColaboracao(colaboracao: Colaboracao) {
+    return new Promise((resolve, reject) => {
+      var token = JSON.parse(localStorage.getItem('token'));
+      const options = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+      };
+      this.http.put(environment.api + '/colaboracoes/', colaboracao).
+        subscribe((result) => {
+          resolve(result);
+          console.log(result);
+        },
+          (error) => {
+            reject(error.json);
+            console.log(error);
+          })
+    });
+
+  }
+
   getColaboracoesPorCidade(id: number) {
     return new Promise<Colaboracao[]>(resolve => {
       var token = JSON.parse(localStorage.getItem('token'));

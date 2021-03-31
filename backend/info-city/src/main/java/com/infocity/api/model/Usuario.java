@@ -70,9 +70,6 @@ public class Usuario {
 	@JoinColumn(name = "cidade_id")
 	private Cidade cidade;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-	private List<Colaboracao> colaboracoes = new ArrayList<>();
-	
 	@ManyToMany(cascade = CascadeType.MERGE)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
