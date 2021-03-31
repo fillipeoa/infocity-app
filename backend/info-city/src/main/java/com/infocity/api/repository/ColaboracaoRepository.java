@@ -10,5 +10,5 @@ import com.infocity.api.model.Colaboracao;
 public interface ColaboracaoRepository extends JpaRepository<Colaboracao, Integer> {
 	Colaboracao findById(int id);
 	List<Colaboracao> findAllByUsuarioId(int id);
-	List<Colaboracao> findAllByCidade(String cidade);
-}
+	List<Colaboracao> findAllByCidadeId(int id);
+ }

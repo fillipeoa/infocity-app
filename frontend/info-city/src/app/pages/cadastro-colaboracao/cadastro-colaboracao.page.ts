@@ -6,6 +6,8 @@ import { Estado } from 'src/app/interfaces/estado/estado';
 import { Cidade } from 'src/app/interfaces/cidade/cidade';
 import { EstadoService } from 'src/app/sevices/estado/estado.service';
 import { ToastController } from '@ionic/angular';
+import { CidadeService } from 'src/app/sevices/cidade/cidade.service';
+import { ColaboracaoService } from 'src/app/sevices/colaboracao/colaboracao.service';
 
 @Component({
   selector: 'app-cadastro-colaboracao',
@@ -16,35 +18,45 @@ export class CadastroColaboracaoPage implements OnInit {
 
   estados: Estado[] = [];
   cidades: Cidade[] = [];
-  cidade: Cidade = null;
+  cidadesEstado: Cidade[] = [];
 
   colaboracao: Colaboracao = {
     id: 0,
     titulo: '',
     descricao: '',
     cidade: {
-      id: 0, 
-      nome: '', 
-      estado:{
-        id: 0, 
-        nome: '', 
+      id: 0,
+      nome: '',
+      estado: {
+        id: 0,
+        nome: '',
         abreviacao: '',
       }
     },
-    usuario: null,
+    usuario: {
+      id: 0,
+      nome: '',
+      email: '',
+      password: '',
+      cidade: null,
+      userName: '',
+      created_at: null,
+      updated_at: null,
+      role: null
+    },
     rua: '',
     numero: 0,
     bairro: '',
     complemento: '',
-    latitude: 0, 
-    longitude: 0, 
-    created_at: null, 
+    latitude: 0.0,
+    longitude: 0.0,
+    created_at: null,
     updated_at: null
   }
 
   formGroup: FormGroup;
 
-  constructor( private router: Router, private formBuilder: FormBuilder, private estadoService: EstadoService, public toastController: ToastController) { 
+  constructor(private router: Router, private formBuilder: FormBuilder, private estadoService: EstadoService, public toastController: ToastController, private cidadeService: CidadeService, private colaboracaoService: ColaboracaoService) {
     this.formGroup = this.formBuilder.group({
       titulo: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       descricao: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
@@ -57,27 +69,59 @@ export class CadastroColaboracaoPage implements OnInit {
     });
 
     this.getEstados();
+    this.getCidades();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  criar(){}
+  criar() {
+    this.colaboracao.usuario.id = 1;
+    this.colaboracaoService.createColaboracao(this.colaboracao)
+      .then(data => {
+        if (data) {
+          console.log(data);
+          this.router.navigateByUrl("/home")
+        }
 
-  getEstados(){
+      }).catch((err) => {
+        this.exibirMensagem('Email ou senha incorretos');
+      });
+  }
+
+  getEstados() {
     this.estadoService.getEstados()
-    .then(data => {
-      if (data) {
-        this.estados = data;
-        console.log(this.estados);
+      .then(data => {
+        if (data) {
+          this.estados = data;
+        }
+      }).catch((err) => {
+        this.exibirMensagem('Erro ao conectar com o banco de dados. Tente novamente mais tarde.');
       }
-    }).catch((err) => {
-      this.exibirMensagem('Erro ao conectar com o banco de dados. Tente novamente mais tarde.');
-    }
-    );
+      );
   }
 
-  getCidades(){
-    
+  getCidades() {
+    this.cidadeService.getCidades()
+      .then(data => {
+        if (data) {
+          this.cidades = data;
+        }
+      }).catch((err) => {
+        this.exibirMensagem('Erro ao conectar com o banco de dados. Tente novamente mais tarde.');
+      }
+      );
+
+  }
+
+  getCidadesDoEstado() {
+    this.cidadesEstado = [];
+    this.colaboracao.cidade.id = 0;
+    for (const cidade of this.cidades) {
+      if (cidade.estado.id == this.colaboracao.cidade.estado.id) {
+        this.cidadesEstado.push(cidade);
+        console.log(this.cidadesEstado);
+      }
+    }
   }
 
   async exibirMensagem(menssagem: string) {

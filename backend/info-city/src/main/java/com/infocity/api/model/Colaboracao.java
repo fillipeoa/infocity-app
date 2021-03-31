@@ -29,7 +29,7 @@ public class Colaboracao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private int id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
@@ -44,9 +44,6 @@ public class Colaboracao {
 	@NotEmpty(message = "*Por favor digite uma descrição ")
 	private String descricao;
 	
-	@Column(name = "dataRegistro", nullable = false)
-	private Date dataRegistro;
-	
 	@Column(name = "latitude", nullable = false)
 	private Double latitide;
 	
@@ -54,7 +51,7 @@ public class Colaboracao {
 	private Double longitude;
 	
 	@Column(name = "rua", nullable = false)
-	@Length(min = 5, message = "*A rua deve ter pelo menos 5 characteres")
+	@Length(min = 3, message = "*A rua deve ter pelo menos 3 characteres")
 	@NotEmpty(message = "*Por favor digite uma rua")
 	private String rua;
 	
@@ -63,13 +60,11 @@ public class Colaboracao {
 	private String numero;
 	
 	@Column(name = "bairro", nullable = false)
-	@Length(min = 5, message = "*O bairro deve ter pelo menos 5 characteres")
+	@Length(min = 3, message = "*O bairro deve ter pelo menos 3 characteres")
 	@NotEmpty(message = "*Por favor digite um bairro")
 	private String bairro;
 	
-	@Column(name = "complemento", nullable = false)
-	@Length(min = 5, message = "*O complemento deve ter pelo menos 5 characteres")
-	@NotEmpty(message = "*Por favor digite um complemento")
+	@Column(name = "complemento")
 	private String complemento;
 
 	@ManyToOne
@@ -78,6 +73,9 @@ public class Colaboracao {
 	
 	@Column(name = "flagSituacao", nullable = false)
 	private int flagSituacao;
+
+	@Column(name = "avaliacao")
+	private int avaliacao;
 	
 	@Column(name = "created_at", nullable = false)
 	private Date created_at;
@@ -107,14 +105,6 @@ public class Colaboracao {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public Date getDataRegistro() {
-		return dataRegistro;
-	}
-
-	public void setDataRegistro(Date dataRegistro) {
-		this.dataRegistro = dataRegistro;
 	}
 
 	public Double getLatitide() {

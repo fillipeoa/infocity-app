@@ -60,15 +60,19 @@
 
       <ion-item-divider></ion-item-divider>
 
-      <p class="data"><strong>Avaliação</strong></p>
+      <h1 class="tituloEndereco"><strong>Avalie a resposta a essa colaboração:</strong></h1>
 
-      <div class="estrelas">
-        <ion-icon name="star" color="warning"></ion-icon>
-        <ion-icon name="star" color="warning"></ion-icon>
-        <ion-icon name="star" color="warning"></ion-icon>
-        <ion-icon name="star" color="warning"></ion-icon>
-        <ion-icon name="star-half" color="warning"></ion-icon>
-      </div>
+      <ionic5-star-rating #rating
+        activeIcon = "star"
+        defaultIcon = "star-outline"
+        activeColor = "#488aff" 
+        defaultColor = "#f4f4f4"
+        readonly="false"
+        rating="0"
+        fontSize = "32px"
+        (ratingChanged)="avaliar(rating)">
+    </ionic5-star-rating>
+
     </ion-card-content>
   </ion-card>
 </ion-content>

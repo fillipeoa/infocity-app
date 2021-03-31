@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+import { Colaboracao } from 'src/app/interfaces/colaboracao/colaboracao';
+import { Usuario } from 'src/app/interfaces/usuario/usuario';
+import { ColaboracaoService } from 'src/app/sevices/colaboracao/colaboracao.service';
 
 @Component({
   selector: 'app-home',
@@ -6,20 +10,36 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  colaboracoes = [];
-  usuario = JSON.parse(localStorage.getItem('usuarioLogado'));;
+  colaboracoes: Colaboracao[] = [];
+  //usuario: Usuario = JSON.parse(localStorage.getItem('usuarioLogado'));;
 
-  constructor() { }
-
-  ionViewWillEnter() {
-    this.colaboracoes = [];
-    const colaboracoes = JSON.parse(localStorage.getItem('colaboracoes'));
-
-    for (const colaboracao of colaboracoes) {
-      if (colaboracao.cidade == this.usuario.cidade) {
-        this.colaboracoes.push(colaboracao);
-      }
-    }
+  constructor(private colaboracaoService: ColaboracaoService, private toastController: ToastController) { 
+    this.getColaboracoesPorCidade();
   }
 
+
+  getColaboracoesPorCidade() {
+    this.colaboracaoService.getColaboracoesPorCidade(3)
+      .then(data => {
+        if (data) {
+          this.colaboracoes = data;
+          console.log(this.colaboracoes);
+        }
+      }).catch((err) => {
+        this.exibirMensagem('Erro ao conectar com o banco de dados. Tente novamente mais tarde.');
+      }
+      );
+  }
+
+  async exibirMensagem(menssagem: string) {
+    const toast = await this.toastController.create({
+      message: menssagem,
+      duration: 2000,
+      color: "danger"
+    });
+    toast.present();
+  }
+
+
+ 
 }

@@ -28,13 +28,21 @@ public class ColaboracaoService {
 	public List<Colaboracao> findAllByUsuarioId(int id){
 		return colaboracaoRepository.findAllByUsuarioId(id);
 	}
+	
+	public List<Colaboracao> findAllByCidadeId(int id){
+		return colaboracaoRepository.findAllByCidadeId(id);
+	}
 
 	public Colaboracao save(Colaboracao  colaboracao) {
 		log.debug("Request to save  colaboracao : {}",  colaboracao);
 		Date date = new Date();
 		colaboracao.setCreated_at(date);
 		colaboracao.setUpdated_at(date);
-		colaboracao =  colaboracaoRepository.save( colaboracao);
+		
+		colaboracao.setLatitide(0.0);
+		colaboracao.setLongitude(0.0);
+		
+		colaboracao =  colaboracaoRepository.save(colaboracao);
 		return colaboracao;
 	}
 	
@@ -49,7 +57,7 @@ public class ColaboracaoService {
 	
 	
 	public Colaboracao findOne(int id) {
-		return  colaboracaoRepository.findById(id);
+		return colaboracaoRepository.findById(id);
 	}
 	
 	public void delete(int id) {

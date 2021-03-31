@@ -15,4 +15,6 @@ export interface Colaboracao {
     longitude: number;
     created_at: Date;
     updated_at: Date;
+    avaliacao: number;
+
 }
