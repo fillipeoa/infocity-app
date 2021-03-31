@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Colaboracao } from 'src/app/interfaces/colaboracao/colaboracao';
+import { Usuario } from 'src/app/interfaces/usuario/usuario';
 import { ColaboracaoService } from 'src/app/sevices/colaboracao/colaboracao.service';
 
 @Component({
@@ -11,17 +13,20 @@ import { ColaboracaoService } from 'src/app/sevices/colaboracao/colaboracao.serv
 export class ColaboracoesPage implements OnInit {
 
   colaboracoes: Colaboracao[] = [];
-  //usuario: Usuario = JSON.parse(localStorage.getItem('usuarioLogado'));;
+  usuario: Usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
 
 
-  constructor(private colaboracaoService: ColaboracaoService, private toastController: ToastController) { 
+  constructor(private colaboracaoService: ColaboracaoService, private toastController: ToastController, private router: Router) { 
+    if (this.usuario == null) {
+      router.navigateByUrl("/index");
+    }
     this.getColaboracoesUsuarioLogado()
   }
   
   ngOnInit() {}
 
   getColaboracoesUsuarioLogado() {
-    this.colaboracaoService.getColaboracoesUsuarioLogado(1)
+    this.colaboracaoService.getColaboracoesUsuarioLogado(this.usuario.id)
       .then(data => {
         if (data) {
           this.colaboracoes = data;

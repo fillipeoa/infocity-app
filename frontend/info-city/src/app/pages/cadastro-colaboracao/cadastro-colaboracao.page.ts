@@ -35,7 +35,6 @@ export class CadastroColaboracaoPage implements OnInit {
     },
     usuario: {
       id: 0,
-      nome: '',
       email: '',
       password: '',
       cidade: null,

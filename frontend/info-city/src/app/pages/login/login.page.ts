@@ -20,46 +20,53 @@ export class LoginPage implements OnInit {
 
   formGroup: FormGroup
 
-  constructor(private router: Router,  public toastController: ToastController, private formBuilder: FormBuilder, private loginService: LoginService) {
+  constructor(private router: Router, public toastController: ToastController, private formBuilder: FormBuilder, private loginService: LoginService) {
     this.formGroup = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       senha: ['', Validators.compose([Validators.required])],
     });
 
-   }
+  }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     localStorage.setItem('usuarioLogado', JSON.stringify([]));
   }
 
-  entrar(){
+  entrar() {
     this.loginService.authenticate(this.login.email, this.login.senha)
-      .then(data => {
-        if(data){
+      .then(async data => {
+        if (data) {
           localStorage.setItem('token', JSON.stringify(data));
-          this.getUsuarioLogin();
-          this.router.navigateByUrl("/home")
+          await this.getUsuarioLogin();
+          setTimeout(() => {
+            this.router.navigateByUrl("/home")
+          }, 3000);
+
         }
-  
+
       }).catch((err) => {
         this.exibirMensagem('Email ou senha incorretos');
       });
 
   }
 
-  
-  getUsuarioLogin(){
+
+  getUsuarioLogin() {
+
     this.loginService.getUsuarioLogin(this.login.email, this.login.senha)
       .then(data => {
-        if(data){
+        if (data) {
           localStorage.setItem('usuarioLogado', JSON.stringify(data));
         }
       }).catch((err) => {
         this.exibirMensagem('Email ou senha incorretos');
       });
+
   }
+
+
   async exibirMensagem(menssagem: string) {
     const toast = await this.toastController.create({
       message: menssagem,
