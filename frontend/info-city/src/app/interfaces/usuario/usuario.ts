@@ -3,7 +3,6 @@ import { Role } from "../role/role";
 
 export interface Usuario {
     id: number;
-    nome: String;
     userName: String;
     password: String;
     email: String;

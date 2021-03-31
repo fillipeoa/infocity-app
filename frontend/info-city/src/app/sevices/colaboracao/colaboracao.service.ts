@@ -12,7 +12,6 @@ export class ColaboracaoService {
 
   createColaboracao(colaboracao: Colaboracao) {
     return new Promise((resolve, reject) => {
-      console.log(colaboracao);
       var token = JSON.parse(localStorage.getItem('token'));
       const options = {
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }

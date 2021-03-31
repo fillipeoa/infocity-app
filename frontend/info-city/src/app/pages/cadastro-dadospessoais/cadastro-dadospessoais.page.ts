@@ -11,10 +11,17 @@ import { Usuario } from 'src/app/interfaces/usuario/usuario';
 export class CadastroDadospessoaisPage implements OnInit {
   usuario: Usuario = {
     id: 0,
-    nome: '',
     email: '',
     password: '',
-    cidade: null,
+    cidade: {
+      id: 0,
+      nome: '',
+      estado: {
+        id: 0,
+        nome: '',
+        abreviacao: '',
+      }
+    },
     userName: '', 
     created_at: null, 
     updated_at: null,
@@ -31,23 +38,23 @@ export class CadastroDadospessoaisPage implements OnInit {
     });
    }
 
+   ionViewWillEnter() {
+     if (JSON.parse(localStorage.getItem('cadastroUsuario'))) {
+      this.usuario =JSON.parse(localStorage.getItem('cadastroUsuario'));
+     }
+    
+  }
+
   ngOnInit() { }
 
   continuar() {
-    var usuarios = JSON.parse(localStorage.getItem('usuarios'));
+    localStorage.setItem('cadastroUsuario', JSON.stringify(this.usuario));
+    this.router.navigateByUrl('/cadastro-localizacao')
+  }
 
-    if (usuarios == null) {
-      usuarios = [];
-      localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    }
-
-
-    this.usuario.id = usuarios.length + 1;
-    usuarios.push(this.usuario);
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-    this.router.navigate(['cadastro-localizacao', this.usuario.id]);
-
+  voltar(){
+    localStorage.removeItem("cadastroUsuario");
+    this.router.navigateByUrl("/index")
   }
 
 }

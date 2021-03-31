@@ -10,18 +10,12 @@ import com.infocity.api.model.Usuario;
 @Controller
 public class LoginController {
 	
-	@GetMapping(value={"/", "/login"})
-    public ModelAndView login(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
-    }
 	
 	@GetMapping("/registration")
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
         Usuario user = new Usuario();
-        user.setNome("Meu Nome");
+        user.setUserName("Meu Nome");
         modelAndView.addObject("user", user);
         modelAndView.setViewName("registration");
         return modelAndView;
