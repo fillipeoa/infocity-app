@@ -28,6 +28,7 @@ export class CadastroLocalizacaoPage implements OnInit {
     created_at: null,
     updated_at: null,
     role: null,
+    foto: '',
     cidade: {
       id: 0,
       nome: '',
@@ -100,7 +101,7 @@ export class CadastroLocalizacaoPage implements OnInit {
         this.getUsuarioLogin();
 
         setTimeout(() => {
-          this.router.navigateByUrl("/home");
+          this.router.navigateByUrl("/tabs/home");
         }, 2000);
         
       }

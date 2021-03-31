@@ -57,7 +57,6 @@ export class CadastroColaboracaoPage implements OnInit {
     longitude: 0.0,
     created_at: null,
     updated_at: null,
-    avaliacao: 0
   }
 
   formGroup: FormGroup;

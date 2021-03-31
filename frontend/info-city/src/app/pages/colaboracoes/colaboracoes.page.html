@@ -6,7 +6,7 @@
 
 <ion-content padding>
   <div class="cards">
-    <ion-card href="detalhe-colaboracao" *ngFor="let colaboracao of colaboracoes" (click)="this.router.navigate(['colaboracoes', colaboracao.id]);">
+    <ion-card  *ngFor="let colaboracao of colaboracoes" (click)="this.router.navigate(['colaboracoes', colaboracao.id]);">
       <ion-card-header>
         <ion-card-title>
           <ion-item>

@@ -16,5 +16,4 @@ export interface Colaboracao {
     created_at: Date;
     updated_at: Date;
     avaliacao: number;
-
 }

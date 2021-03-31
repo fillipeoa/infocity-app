@@ -194,6 +194,15 @@ public class Colaboracao {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public int getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(int avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+	
 	
 	
 	

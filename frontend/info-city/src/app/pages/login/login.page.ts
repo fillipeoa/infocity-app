@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
           localStorage.setItem('token', JSON.stringify(data));
           await this.getUsuarioLogin();
           setTimeout(() => {
-            this.router.navigateByUrl("/home")
+            this.router.navigateByUrl("/tabs/home")
           }, 3000);
 
         }
