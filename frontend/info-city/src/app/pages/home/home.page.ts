@@ -15,8 +15,8 @@ export class HomePage {
   usuario: Usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
 
   constructor(private colaboracaoService: ColaboracaoService, private toastController: ToastController, private router: Router) { 
-    if (this.usuario == null) {
-      router.navigateByUrl("/index");
+    if (!this.usuario.id) {
+      this.router.navigateByUrl("/index");
     }
     this.getColaboracoesPorCidade();
   }

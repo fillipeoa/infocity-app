@@ -16,6 +16,10 @@ export class IndexPage implements OnInit {
     this.router.navigateByUrl("/login");
   }
 
+  ionViewWillEnter() {
+    localStorage.setItem('usuarioLogado', JSON.stringify([]));
+  }
+
   irParaCadastrar(){
     this.router.navigateByUrl("/cadastro-dadospessoais");
   }

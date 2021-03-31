@@ -11,7 +11,7 @@ export class PerfilPage implements OnInit {
   usuario: Usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
 
   constructor(private router: Router) { 
-    if (this.usuario == null) {
+    if (!this.usuario.id) {
       this.router.navigateByUrl("/index");
     }
   }

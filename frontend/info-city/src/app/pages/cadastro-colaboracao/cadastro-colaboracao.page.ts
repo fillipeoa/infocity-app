@@ -61,8 +61,8 @@ export class CadastroColaboracaoPage implements OnInit {
   formGroup: FormGroup;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private estadoService: EstadoService, public toastController: ToastController, private cidadeService: CidadeService, private colaboracaoService: ColaboracaoService) {
-    if (this.usuario == null) {
-      router.navigateByUrl("/index");
+    if (!this.usuario.id) {
+      this.router.navigateByUrl("/index");
     }
     
     this.formGroup = this.formBuilder.group({
