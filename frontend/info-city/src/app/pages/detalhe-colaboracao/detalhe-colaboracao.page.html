@@ -3,14 +3,14 @@
     <ion-buttons slot="start">
       <ion-back-button
         color="secondary"
-        defaultHref="colaboracoes"
+        defaultHref="home"
       ></ion-back-button>
     </ion-buttons>
     <h2 class="titulo">Detalhes da colaboracao</h2>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="carregou">
   <ion-card>
     <ion-card-header>
       <ion-card-title>
@@ -20,17 +20,17 @@
               src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png"
             />
           </ion-avatar>
-          <ion-label class="nome">Fillipe</ion-label>
+          <ion-label class="nome">{{this.colaboracao.usuario.userName}}</ion-label>
         </ion-item>
       </ion-card-title>
     </ion-card-header>
 
     <ion-item-divider></ion-item-divider>
 
-    <ion-card-content>
-      <h1 class="cardTitulo"><strong>Mesas na rua!</strong></h1>
+    <ion-card-content >
+      <h1 class="cardTitulo"><strong>{{this.colaboracao.titulo}}</strong></h1>
       <div class="descricao ion-margin">
-        Bar do meu bairro está deixando mesas na rua! 
+        {{this.colaboracao.descricao}}
       </div>
 
       <ion-item-divider></ion-item-divider>
@@ -38,11 +38,11 @@
       <h1 class="tituloEndereco"><strong>Endereço</strong></h1>
 
       <div class="endereco">
-        <strong>Rua:</strong> Rua Honduras<br />
-        <strong>Número:</strong> 364<br />
-        <strong>Bairro:</strong> Ana Rita<br />
-        <strong>Complemento:</strong> <br />
-        <strong>Cidade:</strong> Tímoteo-MG<br />
+        <strong>Rua:</strong> {{this.colaboracao.rua}}<br />
+        <strong>Número:</strong> {{this.colaboracao.numero}}<br />
+        <strong>Bairro:</strong> {{this.colaboracao.bairro}}<br />
+        <strong>Complemento:</strong> {{this.colaboracao.complemento}}<br />
+        <strong>Cidade:</strong> {{this.colaboracao.cidade.nome}}<br />
       </div>
 
       <ion-item-divider></ion-item-divider>
@@ -62,16 +62,18 @@
 
       <h1 class="tituloEndereco"><strong>Avalie a resposta a essa colaboração:</strong></h1>
 
+      <div style="display: block; margin-left: auto; margin-right: auto;">  
       <ionic5-star-rating #rating
         activeIcon = "star"
         defaultIcon = "star-outline"
-        activeColor = "#488aff" 
-        defaultColor = "#f4f4f4"
+        activeColor = "#ffff00" 
+        defaultColor = "gray"
         readonly="false"
-        rating="0"
+        rating="{{this.colaboracao.avaliacao}}"
         fontSize = "32px"
         (ratingChanged)="avaliar(rating)">
     </ionic5-star-rating>
+  </div>
 
     </ion-card-content>
   </ion-card>
