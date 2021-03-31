@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/interfaces/usuario/usuario';
 
 @Component({
   selector: 'app-perfil',
@@ -6,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
+  usuario: Usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
 
-  constructor() { }
+  constructor(private router: Router) { 
+    if (this.usuario == null) {
+      this.router.navigateByUrl("/index");
+    }
+  }
 
   ngOnInit() {
   }

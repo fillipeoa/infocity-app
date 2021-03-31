@@ -98,7 +98,11 @@ export class CadastroLocalizacaoPage implements OnInit {
         console.log(data);
         localStorage.removeItem("cadastroUsuario");
         this.getUsuarioLogin();
-        this.router.navigateByUrl("/home")
+
+        setTimeout(() => {
+          this.router.navigateByUrl("/home");
+        }, 2000);
+        
       }
 
     }).catch((err) => {

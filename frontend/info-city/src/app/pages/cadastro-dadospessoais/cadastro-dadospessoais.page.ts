@@ -40,10 +40,12 @@ export class CadastroDadospessoaisPage implements OnInit {
 
    ionViewWillEnter() {
      if (JSON.parse(localStorage.getItem('cadastroUsuario'))) {
-      this.usuario =JSON.parse(localStorage.getItem('cadastroUsuario'));
+      localStorage.setItem('usuarioLogado', JSON.stringify([]));
      }
-    
+     localStorage.setItem('usuarioLogado', JSON.stringify([]));
   }
+
+  
 
   ngOnInit() { }
 
