@@ -49,6 +49,7 @@ export class CadastroColaboracaoPage implements OnInit {
       foto: ''
     },
     rua: '',
+    avaliacao: 0,
     numero: 0,
     bairro: '',
     complemento: '',
