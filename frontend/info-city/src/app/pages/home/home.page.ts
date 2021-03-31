@@ -27,7 +27,6 @@ export class HomePage {
       .then(data => {
         if (data) {
           this.colaboracoes = data;
-          console.log(this.colaboracoes);
         }
       }).catch((err) => {
         this.exibirMensagem('Erro ao conectar com o banco de dados. Tente novamente mais tarde.');

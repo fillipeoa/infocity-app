@@ -8,6 +8,7 @@ import { EstadoService } from 'src/app/sevices/estado/estado.service';
 import { ToastController } from '@ionic/angular';
 import { CidadeService } from 'src/app/sevices/cidade/cidade.service';
 import { ColaboracaoService } from 'src/app/sevices/colaboracao/colaboracao.service';
+import { Usuario } from 'src/app/interfaces/usuario/usuario';
 
 @Component({
   selector: 'app-cadastro-colaboracao',
@@ -19,6 +20,9 @@ export class CadastroColaboracaoPage implements OnInit {
   estados: Estado[] = [];
   cidades: Cidade[] = [];
   cidadesEstado: Cidade[] = [];
+
+  usuario: Usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+
 
   colaboracao: Colaboracao = {
     id: 0,
@@ -41,7 +45,8 @@ export class CadastroColaboracaoPage implements OnInit {
       userName: '',
       created_at: null,
       updated_at: null,
-      role: null
+      role: null,
+      foto: ''
     },
     rua: '',
     numero: 0,
@@ -56,6 +61,10 @@ export class CadastroColaboracaoPage implements OnInit {
   formGroup: FormGroup;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private estadoService: EstadoService, public toastController: ToastController, private cidadeService: CidadeService, private colaboracaoService: ColaboracaoService) {
+    if (this.usuario == null) {
+      router.navigateByUrl("/index");
+    }
+    
     this.formGroup = this.formBuilder.group({
       titulo: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       descricao: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
@@ -64,7 +73,7 @@ export class CadastroColaboracaoPage implements OnInit {
       rua: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       numero: ['', Validators.compose([Validators.required])],
       bairro: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-      complemento: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      complemento: ['', Validators.minLength(5)],
     });
 
     this.getEstados();
@@ -74,7 +83,7 @@ export class CadastroColaboracaoPage implements OnInit {
   ngOnInit() { }
 
   criar() {
-    this.colaboracao.usuario.id = 1;
+    this.colaboracao.usuario.id = this.usuario.id;
     this.colaboracaoService.createColaboracao(this.colaboracao)
       .then(data => {
         if (data) {

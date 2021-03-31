@@ -9,5 +9,6 @@ export interface Usuario {
     cidade: Cidade;
     created_at: Date;
     updated_at: Date;
+    foto: string
     role: Role;
 }

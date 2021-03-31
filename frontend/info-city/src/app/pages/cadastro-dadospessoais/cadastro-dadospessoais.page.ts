@@ -22,6 +22,7 @@ export class CadastroDadospessoaisPage implements OnInit {
         abreviacao: '',
       }
     },
+    foto: '',
     userName: '', 
     created_at: null, 
     updated_at: null,

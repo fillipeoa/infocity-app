@@ -20,17 +20,17 @@ export class ColaboracoesPage implements OnInit {
     if (this.usuario == null) {
       router.navigateByUrl("/index");
     }
-    this.getColaboracoesUsuarioLogado()
   }
   
-  ngOnInit() {}
+  ngOnInit() {
+    this.getColaboracoesUsuarioLogado();
+  }
 
   getColaboracoesUsuarioLogado() {
     this.colaboracaoService.getColaboracoesUsuarioLogado(this.usuario.id)
       .then(data => {
         if (data) {
           this.colaboracoes = data;
-          console.log(this.colaboracoes);
         }
       }).catch((err) => {
         this.exibirMensagem('Erro ao conectar com o banco de dados. Tente novamente mais tarde.');

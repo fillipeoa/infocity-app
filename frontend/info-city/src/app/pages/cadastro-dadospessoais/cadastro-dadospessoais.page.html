@@ -28,12 +28,7 @@
         <ion-label position="floating">Senha</ion-label>
         <ion-input type="password"  [(ngModel)]="usuario.password" formControlName="senha"></ion-input>
       </ion-item>
-
-      <ion-item class="ion-margin">
-        <ion-label position="floating">Foto</ion-label>
-        <ion-input type="foto"  [(ngModel)]="usuario.foto" [ngModelOptions]="{standalone: true}"></ion-input>
-      </ion-item>
-
+      
       <ion-button expand="block" color="primary" class="ion-margin" shape="round" (click)="continuar()" [disabled]="!formGroup.valid">Continuar</ion-button>
     </div>
   </div>
