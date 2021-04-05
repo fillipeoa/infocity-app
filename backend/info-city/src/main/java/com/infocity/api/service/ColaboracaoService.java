@@ -39,9 +39,6 @@ public class ColaboracaoService {
 		colaboracao.setCreated_at(date);
 		colaboracao.setUpdated_at(date);
 		
-		colaboracao.setLatitide(0.0);
-		colaboracao.setLongitude(0.0);
-		
 		colaboracao =  colaboracaoRepository.save(colaboracao);
 		return colaboracao;
 	}

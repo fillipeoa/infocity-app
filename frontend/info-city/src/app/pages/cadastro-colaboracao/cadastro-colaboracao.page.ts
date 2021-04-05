@@ -9,6 +9,8 @@ import { ToastController } from '@ionic/angular';
 import { CidadeService } from 'src/app/sevices/cidade/cidade.service';
 import { ColaboracaoService } from 'src/app/sevices/colaboracao/colaboracao.service';
 import { Usuario } from 'src/app/interfaces/usuario/usuario';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 
 @Component({
   selector: 'app-cadastro-colaboracao',
@@ -22,6 +24,9 @@ export class CadastroColaboracaoPage implements OnInit {
   cidadesEstado: Cidade[] = [];
 
   usuario: Usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+  gps: boolean = false;
+  bairro: boolean = false;
 
 
   colaboracao: Colaboracao = {
@@ -61,11 +66,11 @@ export class CadastroColaboracaoPage implements OnInit {
 
   formGroup: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private estadoService: EstadoService, public toastController: ToastController, private cidadeService: CidadeService, private colaboracaoService: ColaboracaoService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private estadoService: EstadoService, public toastController: ToastController, private cidadeService: CidadeService, private colaboracaoService: ColaboracaoService, private geolocation: Geolocation) {
     if (!this.usuario.id) {
       this.router.navigateByUrl("/index");
     }
-    
+
     this.formGroup = this.formBuilder.group({
       titulo: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       descricao: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
@@ -88,12 +93,11 @@ export class CadastroColaboracaoPage implements OnInit {
     this.colaboracaoService.createColaboracao(this.colaboracao)
       .then(data => {
         if (data) {
-          console.log(data);
-          this.router.navigateByUrl("/home")
+          this.router.navigateByUrl("/tabs/home")
         }
 
       }).catch((err) => {
-        this.exibirMensagem('Email ou senha incorretos');
+        this.exibirMensagem('Error ao criar colaboração');
       });
   }
 
@@ -128,9 +132,62 @@ export class CadastroColaboracaoPage implements OnInit {
     for (const cidade of this.cidades) {
       if (cidade.estado.id == this.colaboracao.cidade.estado.id) {
         this.cidadesEstado.push(cidade);
-        console.log(this.cidadesEstado);
       }
     }
+  }
+
+  // use geolocation to get user's device coordinates
+  getCurrentCoordinates() {
+    this.geolocation.getCurrentPosition()
+      .then((resp) => {
+        this.colaboracao.latitude = resp.coords.latitude;
+        this.colaboracao.longitude = resp.coords.longitude;
+        this.colaboracaoService.getLocation(this.colaboracao.latitude, this.colaboracao.longitude).subscribe(
+          data => {
+            var achou = false;
+            if (data && data['address']) {
+              console.log(data);
+              for (const cidade of this.cidades) {
+                if (cidade.nome == data['address']['town'] && cidade.estado.nome == data['address']['state']  || cidade.nome == data['address']['city'] && cidade.estado.nome == data['address']['state']) {
+                  achou = true;
+                  this.gps = true;
+                  this.colaboracao.cidade.estado.id = cidade.estado.id;
+                  this.colaboracao.cidade.id = cidade.id;
+                  this.colaboracao.cidade.estado.nome = cidade.estado.nome;
+                  this.colaboracao.cidade.nome = cidade.nome;
+                  this.colaboracao.rua = data['address']['road']
+                  if (data['address']['neighbourhood']) {
+                    this.bairro = true;
+                    this.colaboracao.bairro = data['address']['neighbourhood'];
+                  }
+                }
+              }
+              if (achou == false) {
+                this.exibirMensagem('Ainda não estamos trabalhando nessa cidade');
+              }
+            }
+          }
+        )
+      }).catch((error) => {
+        this.exibirMensagem('Erro ao recuperar sua localização: ');
+      });
+
+  }
+
+  disabilitarGps(){
+    this.gps = false;
+    this.bairro = false;
+    this.colaboracao.cidade = {
+      id: 0,
+      nome: '',
+      estado: {
+        id: 0,
+        nome: '',
+        abreviacao: '',
+      }
+    }
+    this.colaboracao.rua = '';
+    this.colaboracao.bairro= '';
   }
 
   async exibirMensagem(menssagem: string) {

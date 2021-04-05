@@ -7,10 +7,11 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class ColaboracaoService {
-
+  
   constructor(private http: HttpClient) { }
 
   createColaboracao(colaboracao: Colaboracao) {
+    console.log(colaboracao);
     return new Promise((resolve, reject) => {
       var token = JSON.parse(localStorage.getItem('token'));
       console.log(colaboracao);
@@ -95,5 +96,12 @@ export class ColaboracaoService {
           console.log(err);
         });
     });
+  }
+
+  getLocation(lat: number, long: number){
+    const options = {
+      headers: { 'Content-Type': 'application/json'}
+    };
+    return this.http.get(environment.locationApi + `format=json&lat=${lat}&lon=${long}&zoom=20`, options)
   }
 }
