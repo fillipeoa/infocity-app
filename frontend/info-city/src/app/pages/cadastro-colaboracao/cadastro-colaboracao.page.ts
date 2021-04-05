@@ -146,7 +146,6 @@ export class CadastroColaboracaoPage implements OnInit {
           data => {
             var achou = false;
             if (data && data['address']) {
-              console.log(data);
               for (const cidade of this.cidades) {
                 if (cidade.nome == data['address']['town'] && cidade.estado.nome == data['address']['state']  || cidade.nome == data['address']['city'] && cidade.estado.nome == data['address']['state']) {
                   achou = true;

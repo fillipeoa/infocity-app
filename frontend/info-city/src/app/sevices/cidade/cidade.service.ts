@@ -12,12 +12,9 @@ export class CidadeService {
 
   getCidades() {
     return new Promise<Cidade[]>(resolve => {
-      var token = JSON.parse(localStorage.getItem('token'));
       const options = {
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+        headers: { 'Content-Type': 'application/json',}
       };
-
-      console.log(options);
 
       this.http.get<Cidade[]>(environment.api + '/cidades/', options).subscribe(data => {
         resolve(data);
