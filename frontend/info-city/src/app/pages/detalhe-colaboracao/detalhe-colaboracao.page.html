@@ -45,6 +45,8 @@
         <strong>Cidade:</strong> {{this.colaboracao.cidade.nome}}<br />
       </div>
 
+      <div *ngIf="colaboracao.flagSituacao == 1 ">
+
       <ion-item-divider></ion-item-divider>
 
       <h1 class="tituloEndereco"><strong>Situação</strong></h1>
@@ -73,6 +75,8 @@
         fontSize = "32px"
         (ratingChanged)="avaliar(rating)">
     </ionic5-star-rating>
+  </div>
+
   </div>
 
     </ion-card-content>

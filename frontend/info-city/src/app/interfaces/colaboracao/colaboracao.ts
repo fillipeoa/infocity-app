@@ -11,6 +11,7 @@ export interface Colaboracao {
     bairro: String;
     complemento: String;
     cidade: Cidade;
+    flag_situacao: number;
     latitude: number;
     longitude: number;
     created_at: Date;
