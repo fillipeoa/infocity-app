@@ -22,7 +22,7 @@ ion-header{
 
 .fundo{
     position: relative;
-    height: 135%;
+    height: 145%;
     background-color: var(--ion-color-secondary);
 }
 
@@ -46,4 +46,12 @@ ion-header{
     position: relative;
     display: block;
     margin-left: auto;
+}
+
+.gpsButton{
+    width: 60%;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

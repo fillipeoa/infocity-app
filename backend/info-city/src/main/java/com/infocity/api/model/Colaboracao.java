@@ -45,7 +45,7 @@ public class Colaboracao {
 	private String descricao;
 	
 	@Column(name = "latitude", nullable = false)
-	private Double latitide;
+	private Double latitude;
 	
 	@Column(name = "longitude", nullable = false)
 	private Double longitude;
@@ -107,12 +107,12 @@ public class Colaboracao {
 		this.descricao = descricao;
 	}
 
-	public Double getLatitide() {
-		return latitide;
+	public Double getLatitude() {
+		return latitude;
 	}
 
-	public void setLatitide(Double latitide) {
-		this.latitide = latitide;
+	public void setLatitude(Double latitide) {
+		this.latitude = latitide;
 	}
 
 	public Double getLongitude() {

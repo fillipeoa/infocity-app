@@ -24,34 +24,61 @@
         <ion-textarea type="descricao" [(ngModel)]="colaboracao.descricao" formControlName="descricao"></ion-textarea>
       </ion-item>
 
-      <ion-item class="ion-margin">
+      <ion-item class="ion-margin" *ngIf="gps == false">
         <ion-label position="floating">Estado</ion-label>
         <ion-select [(ngModel)]="colaboracao.cidade.estado.id" formControlName="estado" okText="Ok" cancelText="Cancelar" (ionChange)="getCidadesDoEstado()">
           <ion-select-option value="{{estado.id}}" *ngFor="let estado of estados">{{estado.nome}}</ion-select-option>
         </ion-select>
       </ion-item>
       
-
-      <ion-item class="ion-margin">
+      <ion-item class="ion-margin" *ngIf="gps == false">
         <ion-label position="floating">Cidade</ion-label>
         <ion-select [(ngModel)]="colaboracao.cidade.id" formControlName="cidade" okText="Ok" cancelText="Cancelar">
           <ion-select-option value="{{cidade.id}}" *ngFor="let cidade of cidadesEstado">{{cidade.nome}}</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item class="ion-margin">
+      <ion-item class="ion-margin" *ngIf="gps == true">
+        <ion-label position="floating">Estado</ion-label>
+        <ion-input disabled="true" type="text" [(ngModel)]="colaboracao.cidade.estado.nome" formControlName="estado"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin" *ngIf="gps == true">
+        <ion-label position="floating">Cidade</ion-label>
+        <ion-input disabled="true" type="text" [(ngModel)]="colaboracao.cidade.nome" formControlName="cidade"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin" *ngIf="gps == false">
         <ion-label position="floating">Rua</ion-label>
         <ion-input type="text" [(ngModel)]="colaboracao.rua" formControlName="rua"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin" *ngIf="gps == true">
+        <ion-label position="floating">Rua</ion-label>
+        <ion-input disabled="true" type="text" [(ngModel)]="colaboracao.rua" formControlName="rua"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin" *ngIf="bairro == true">
+        <ion-label position="floating">Bairro</ion-label>
+        <ion-input disabled="true" type="text" [(ngModel)]="colaboracao.bairro" formControlName="bairro"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="getCurrentCoordinates()" class="gpsButton"  shape="round" *ngIf="gps == false">
+        Ou pelo GPS <ion-icon name="locate-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="disabilitarGps()" class="gpsButton" shape="round" *ngIf="gps == true">
+       Disabilitar GPS <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+
+      <ion-item class="ion-margin" *ngIf="bairro == false">
+        <ion-label position="floating">Bairro</ion-label>
+        <ion-input type="text" [(ngModel)]="colaboracao.bairro" formControlName="bairro"></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin">
         <ion-label position="floating">Número</ion-label>
         <ion-input type="number" [(ngModel)]="colaboracao.numero" formControlName="numero"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin">
-        <ion-label position="floating">Bairro</ion-label>
-        <ion-input type="text" [(ngModel)]="colaboracao.bairro" formControlName="bairro"></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin">
