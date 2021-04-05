@@ -13,6 +13,7 @@ export class ColaboracaoService {
   createColaboracao(colaboracao: Colaboracao) {
     return new Promise((resolve, reject) => {
       var token = JSON.parse(localStorage.getItem('token'));
+      console.log(colaboracao);
       const options = {
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
       };
@@ -62,7 +63,6 @@ export class ColaboracaoService {
             console.log(error);
           })
     });
-
   }
 
   getColaboracoesPorCidade(id: number) {
