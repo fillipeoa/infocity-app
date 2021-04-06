@@ -98,6 +98,22 @@ export class ColaboracaoService {
     });
   }
 
+  getSituacoes(id: number) {
+    return new Promise<Colaboracao[]>(resolve => {
+      var token = JSON.parse(localStorage.getItem('token'));
+      const options = {
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+      };
+
+      this.http.get<Colaboracao[]>(environment.api + '/situacoes/colaboracao/' + id, options).subscribe(data => {
+        resolve(data);
+      },
+        err => {
+          console.log(err);
+        });
+    });
+  }
+
   getLocation(lat: number, long: number){
     const options = {
       headers: { 'Content-Type': 'application/json'}

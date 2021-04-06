@@ -17,6 +17,7 @@ export class DetalheColaboracaoPage implements OnInit {
   }
 
   public colaboracao;
+  public situacoes;
   public carregou = false;
 
   ngOnInit() {
@@ -26,7 +27,8 @@ export class DetalheColaboracaoPage implements OnInit {
   async buscarColaboracao(){
     const id = this.route.snapshot.paramMap.get('id');
     this.colaboracao = await this.colaboracaoService.buscarColaboracao(id); 
-    console.log(this.colaboracao);
+    this.situacoes = await this.colaboracaoService.getSituacoes(this.colaboracao.id); 
+    console.log(this.situacoes);
     this.carregou = true;
   }
 
