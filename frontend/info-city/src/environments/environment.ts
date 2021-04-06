@@ -10,6 +10,7 @@ export const environment = {
   api: 'http://localhost:8080',
   locationApi: 'https://nominatim.openstreetmap.org/reverse?',
   api_reverse_base: "https://nominatim.openstreetmap.org",
+  token: '',
 
 
 };

@@ -96,7 +96,6 @@ export class CadastroLocalizacaoPage implements OnInit {
     this.usuarioService.createUsuario(this.usuario)
     .then(data => {
       if (data) {
-        console.log(data);
         localStorage.removeItem("cadastroUsuario");
         this.getUsuarioLogin();
 

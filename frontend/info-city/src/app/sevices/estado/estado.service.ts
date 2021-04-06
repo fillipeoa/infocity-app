@@ -12,9 +12,8 @@ export class EstadoService {
 
   getEstados() {
     return new Promise<Estado[]>(resolve => {
-      var token = JSON.parse(localStorage.getItem('token'));
       const options = {
-        headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer '+token.token}
+        headers: {'Content-Type': 'application/json',}
       };
 
       this.http.get<Estado[]>(environment.api + '/estados/', options).subscribe(data => {

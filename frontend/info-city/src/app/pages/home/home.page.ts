@@ -23,7 +23,6 @@ export class HomePage {
 
 
   getColaboracoesPorCidade() {
-    console.log(this.usuario);
     this.colaboracaoService.getColaboracoesPorCidade(this.usuario.cidade.id)
       .then(data => {
         if (data) {

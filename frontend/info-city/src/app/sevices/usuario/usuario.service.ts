@@ -13,14 +13,12 @@ export class UsuarioService {
 
   createUsuario(usuario: Usuario) {
     return new Promise((resolve, reject) => {
-      var token = JSON.parse(localStorage.getItem('token'));
       const options = {
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+        headers: { 'Content-Type': 'application/json'}
       };
       this.http.post(environment.api + '/usuarios/', usuario).
         subscribe((result) => {
           resolve(result);
-          console.log(result);
         },
           (error) => {
             reject(error.json);

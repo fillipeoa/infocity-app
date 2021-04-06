@@ -33,11 +33,15 @@ public class Situacao {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "data", nullable = false)
+    @Column(name = "data")
     private Date data;
 
     @Column(name = "descricao", nullable = false)
-    private Date descricao;
+    private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "colaboracao_id")
+    private Colaboracao colaboracao;
 
     public int getId() {
         return id;
@@ -55,11 +59,19 @@ public class Situacao {
         this.data = data;
     }
 
-    public Date getDescricao() {
+    public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(Date descricao) {
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Colaboracao getColaboracao() {
+        return colaboracao;
+    }
+
+    public void setColaboracao(Colaboracao colaboracao) {
+        this.colaboracao = colaboracao;
     }
 }

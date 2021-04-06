@@ -13,10 +13,8 @@ export class ColaboracaoService {
   createColaboracao(colaboracao: Colaboracao) {
     console.log(colaboracao);
     return new Promise((resolve, reject) => {
-      var token = JSON.parse(localStorage.getItem('token'));
-      console.log(colaboracao);
       const options = {
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+        headers: { 'Content-Type': 'application/json'}
       };
       this.http.post(environment.api + '/colaboracoes/', colaboracao).
         subscribe((result) => {
@@ -33,9 +31,8 @@ export class ColaboracaoService {
 
   buscarColaboracao(id) {
     return new Promise((resolve, reject) => {
-      var token = JSON.parse(localStorage.getItem('token'));
       const options = {
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+        headers: { 'Content-Type': 'application/json'}
       };
       this.http.get(environment.api + '/colaboracoes/' + id).
         subscribe((result) => {
@@ -50,9 +47,8 @@ export class ColaboracaoService {
 
   updateColaboracao(colaboracao: Colaboracao) {
     return new Promise((resolve, reject) => {
-      var token = JSON.parse(localStorage.getItem('token'));
       const options = {
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+        headers: { 'Content-Type': 'application/json'}
       };
       this.http.put(environment.api + '/colaboracoes/', colaboracao).
         subscribe((result) => {
@@ -68,9 +64,8 @@ export class ColaboracaoService {
 
   getColaboracoesPorCidade(id: number) {
     return new Promise<Colaboracao[]>(resolve => {
-      var token = JSON.parse(localStorage.getItem('token'));
       const options = {
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+        headers: { 'Content-Type': 'application/json',}
       };
 
       this.http.get<Colaboracao[]>(environment.api + '/colaboracoes/cidade/' + id, options).subscribe(data => {
@@ -84,9 +79,8 @@ export class ColaboracaoService {
 
   getColaboracoesUsuarioLogado(id: number) {
     return new Promise<Colaboracao[]>(resolve => {
-      var token = JSON.parse(localStorage.getItem('token'));
       const options = {
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token.token }
+        headers: { 'Content-Type': 'application/json'}
       };
 
       this.http.get<Colaboracao[]>(environment.api + '/colaboracoes/usuario/' + id, options).subscribe(data => {
